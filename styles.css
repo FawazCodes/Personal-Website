@@ -13,9 +13,9 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(45deg, #f06, #42e695);
+    background: linear-gradient(135deg, #f06, #42e695);
     background-size: 200% 200%;
-    animation: gradientBG 6s ease infinite;
+    animation: gradientBG 30s ease infinite;
 }
 
 @keyframes gradientBG {
@@ -24,6 +24,7 @@ body {
     }
     50% {
         background-position: 100% 50%;
+   
     }
 }
 
