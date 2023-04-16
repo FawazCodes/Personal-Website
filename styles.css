@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f06, #42e695);
+    animation: gradientBG 10s ease infinite;
+}
+
+@keyframes gradientBG {
+    0%, 100% {
+        background: linear-gradient(135deg, #f06, #42e695);
+    }
+    50% {
+        background: linear-gradient(135deg, #42e695, #f06);
+    }
+}
+
+.container {
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 1rem;
+    max-width: 80%;
+}
+
+h1 {
+    margin-bottom: 1rem;
+}
+
+.button {
+    display: inline-block;
+    background: #42e695;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    margin: 0.5rem;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background: #f06;
+}
+
+.game {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.result {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f06;
+}
