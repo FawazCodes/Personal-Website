@@ -4,49 +4,55 @@
   --tertiary-color: #9b59b6;
 }
 
-body {
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+.background {
+  background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--tertiary-color));
   animation: change-gradient 10s ease-in-out infinite;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes change-gradient {
   0% {
-    background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--tertiary-color));
   }
   50% {
-    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color));
+    background: linear-gradient(to right, var(--secondary-color), var(--tertiary-color), var(--primary-color));
   }
   100% {
-    background: linear-gradient(to right, var(--tertiary-color), var(--primary-color));
+    background: linear-gradient(to right, var(--tertiary-color), var(--primary-color), var(--secondary-color));
   }
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem;
-  background-color: white;
-  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 4rem;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+main {
+  text-align: center;
 }
 
-nav button {
-  font-size: 1.2rem;
-  padding: 1rem 2rem;
-  border-radius: 2rem;
+button {
+  font-size: 2rem;
+  padding: 1.5rem 4rem;
+  border-radius: 3rem;
   border: none;
   color: white;
   background-color: var(--primary-color);
   transition: background-color 0.2s ease-in-out;
+  margin: 1.5rem;
 }
 
-nav button:hover {
+button:hover {
   background-color: var(--secondary-color);
   cursor: pointer;
+}
+
+.footer {
+  background-color: white;
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0px -5px 20px rgba(0, 0, 0, 0.1);
 }
