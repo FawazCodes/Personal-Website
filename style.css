@@ -17,7 +17,7 @@ body {
 
 .background {
   background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--tertiary-color));
-  animation: change-gradient 10s ease-in-out infinite;
+  animation: change-gradient 30s linear infinite;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -59,11 +59,9 @@ main {
   align-items: center;
 }
 
-p {
-  font-size: 1.5rem;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  margin: 0;
+canvas {
+  width: 100%;
+  max-width: 800px;
 }
 
 button {
@@ -86,4 +84,5 @@ button:hover {
   background-color: white;
   padding: 2rem;
   text-align: center;
-  box-shadow: 0px -5px 20px
+  box-shadow: 0px -5px 20px rgba(0, 0, 0, 0.1);
+}
