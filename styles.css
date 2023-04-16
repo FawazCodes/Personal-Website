@@ -9,19 +9,43 @@
 body {
     font-family: 'Roboto', sans-serif;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: linear-gradient(135deg, #f06, #42e695);
-    animation: gradientBG 10s ease infinite;
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
 }
 
 @keyframes gradientBG {
     0%, 100% {
         background: linear-gradient(135deg, #f06, #42e695);
+        background-size: 400% 400%;
     }
-    50% {
+    14% {
         background: linear-gradient(135deg, #42e695, #f06);
+        background-size: 400% 400%;
+    }
+    28% {
+        background: linear-gradient(135deg, #f06, #66a6ff);
+        background-size: 400% 400%;
+    }
+    42% {
+        background: linear-gradient(135deg, #66a6ff, #f06);
+        background-size: 400% 400%;
+    }
+    57% {
+        background: linear-gradient(135deg, #f06, #fcd000);
+        background-size: 400% 400%;
+    }
+    71% {
+        background: linear-gradient(135deg, #fcd000, #f06);
+        background-size: 400% 400%;
+    }
+    85% {
+        background: linear-gradient(135deg, #f06, #42e695);
+        background-size: 400% 400%;
     }
 }
 
@@ -31,6 +55,7 @@ body {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 1rem;
     max-width: 80%;
+    margin-bottom: 2rem;
 }
 
 h1 {
@@ -63,4 +88,10 @@ h1 {
     font-size: 1.2rem;
     font-weight: bold;
     color: #f06;
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 1rem;
 }
