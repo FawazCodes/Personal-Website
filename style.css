@@ -4,14 +4,26 @@
   --tertiary-color: #9b59b6;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
 .background {
   background: linear-gradient(to right, var(--primary-color), var(--secondary-color), var(--tertiary-color));
   animation: change-gradient 10s ease-in-out infinite;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2rem;
 }
 
 @keyframes change-gradient {
@@ -27,11 +39,31 @@
 }
 
 header {
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0;
 }
 
 main {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+p {
+  font-size: 1.5rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0;
 }
 
 button {
@@ -43,16 +75,12 @@ button {
   background-color: var(--primary-color);
   transition: background-color 0.2s ease-in-out;
   margin: 1.5rem;
+  cursor: pointer;
 }
 
 button:hover {
   background-color: var(--secondary-color);
-  cursor: pointer;
 }
 
 .footer {
-  background-color: white;
-  padding: 2rem;
-  text-align: center;
-  box-shadow: 0px -5px 20px rgba(0, 0, 0, 0.1);
-}
+  background
