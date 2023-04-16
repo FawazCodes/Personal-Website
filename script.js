@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const gameBtns = document.querySelectorAll('.game-btn');
     const result = document.getElementById('result');
 
-        redirectBtn.addEventListener('click', () => {
+    redirectBtn.addEventListener('click', () => {
         window.location.href = 'https://curiouscat.live/Idkwallah';
     });
 
@@ -38,4 +38,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 });
-
