@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Personal Website</title>
+    <style>
+      /* CSS styles for the buttons */
+      button {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        color: #fff;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0062cc;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to my personal website!</h1>
+    <p>Click the buttons below to visit some of my favorite websites:</p>
+    <button id="button1">Number Guessing Game</button>
+    <button id="button2">Curious Cat</button>
+
+    <script>
+      // JavaScript code to handle button clicks
+      document.getElementById("button1").addEventListener("click", function() {
+        window.location.href = "https://fawazcodes.github.io/number-guessing-game/";
+      });
+      document.getElementById("button2").addEventListener("click", function() {
+        window.location.href = "https://curiouscat.live/Idkwallah";
+      });
+    </script>
+  </body>
+</html>
