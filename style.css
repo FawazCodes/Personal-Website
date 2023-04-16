@@ -84,4 +84,6 @@ button:hover {
 
 .footer {
   background-color: white;
-  padding: 2rem
+  padding: 2rem;
+  text-align: center;
+  box-shadow: 0px -5px 20px
