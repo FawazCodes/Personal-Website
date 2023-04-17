@@ -1,8 +1,10 @@
+// Get DOM elements
 const result = document.getElementById("result");
 const gameButtons = document.querySelectorAll(".game-btn");
 const redirectBtn = document.getElementById("redirectBtn");
 const winAudio = document.getElementById("winAudio");
 
+// Add event listeners
 redirectBtn.addEventListener("click", () => {
     window.location.href = "https://curiouscat.live/Idkwallah";
 });
@@ -16,10 +18,13 @@ gameButtons.forEach((button) => {
     });
 });
 
+// Define functions
 function getRandomChoice() {
     const choices = ["rock", "paper", "scissors"];
     const randomIndex = Math.floor(Math.random() * choices.length);
-    return choices[randomIndex];
+    const randomChoice = choices[randomIndex];
+    console.log(`Computer choice: ${randomChoice}`);
+    return randomChoice;
 }
 
 function playWinAudio() {
@@ -39,6 +44,7 @@ function determineWinner(userChoice, computerChoice) {
         (userChoice === "paper" && computerChoice === "rock")
     ) {
         playWinAudio();
+        console.log("You win!");
         return "You win!";
     }
 
