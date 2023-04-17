@@ -28,6 +28,7 @@ function playWinAudio() {
 }
 
 function determineWinner(userChoice, computerChoice) {
+    console.log(`User choice: ${userChoice}, Computer choice: ${computerChoice}`);
     if (userChoice === computerChoice) {
         return "It's a tie!";
     }
@@ -42,3 +43,4 @@ function determineWinner(userChoice, computerChoice) {
     }
 
     return "You lose!";
+}
