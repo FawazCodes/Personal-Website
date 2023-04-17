@@ -1,103 +1,22 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>My Personal Website</title>
-    <style>
-      body {
-        background: linear-gradient(45deg, #f3ec78, #af4261);
-        background-size: 400% 400%;
-        animation: Gradient 15s ease infinite;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-      }
-
-      @keyframes Gradient {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      button {
-        font-size: 20px;
-        padding: 20px 40px;
-        background-color: #2ecc71;
-        border: none;
-        color: white;
-        margin: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        outline: none;
-      }
-
-      canvas {
-        border: 2px solid black;
-      }
-
-      #gameContainer {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-      }
-
-      #ticTacToeContainer {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin-top: 20px;
-      }
-
-      .ticTacToeButton {
-        font-size: 40px;
-        padding: 20px;
-        background-color: #3498db;
-        border: none;
-        color: white;
-        margin: 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        outline: none;
-      }
-    </style>
-  </head>
-  <body>
-    <div id="gameContainer">
-      <canvas id="gameCanvas" width="500" height="500"></canvas>
-      <div id="scoreContainer">
-        <h2>Score:</h2>
-        <h2 id="score">0</h2>
-      </div>
-    </div>
-    <button id="curiousCatButton">Curious Cat</button>
-    <div id="ticTacToeContainer">
-      <div id="row1">
-        <button class="ticTacToeButton" id="button1"></button>
-        <button class="ticTacToeButton" id="button2"></button>
-        <button class="ticTacToeButton" id="button3"></button>
-      </div>
-      <div id="row2">
-        <button class="ticTacToeButton" id="button4"></button>
-        <button class="ticTacToeButton" id="button5"></button>
-        <button class="ticTacToeButton" id="button6"></button>
-      </div>
-      <div id="row3">
-        <button class="ticTacToeButton" id="button7"></button>
-        <button class="ticTacToeButton" id="button8"></button>
-        <button class="ticTacToeButton" id="button9"></button>
-      </div>
-    </div>
-    <p id="madeByChatGPT">Made entirely by ChatGPT (with a little help from me)</p>
-    <script src="script.js"></script>
-  </body>
-</html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css?v=1">
+    <script src="script.js" defer></script>
+    <title>Personal Website</title>
+</head>
+<body>
+    <div class="container">
+        <h1>ارحب!</h1>
+        <p>اضغط هنا اذا تبي القط الفضولي:</p>
+        <button id="redirectBtn" class="button">Curious Cat</button>
+        <h2>Play a mini game of Rock, Paper, Scissors</h2>
+        <div class="game">
+            <button class="button game-btn" data-choice="rock">Rock</button>
+            <button class="button game-btn" data-choice="paper">Paper</button>
+            <button class="button game-btn" data-choice="scissors">Scissors</button>
+        </div>
+        <p id="result" class="result"></p>
+        <p>This is an experiment made with the help of ChatGPT.</p>
