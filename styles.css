@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Vazir+Matn&display=swap');
 
 * {
     margin: 0;
@@ -7,7 +8,7 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Overpass', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -16,6 +17,10 @@ body {
     background: url('background.gif') no-repeat center center fixed;
     background-size: cover;
     color: #f1f1f1;
+}
+
+.arabic {
+    font-family: 'Vazir Matn', sans-serif;
 }
 
 .container {
