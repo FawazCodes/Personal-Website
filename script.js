@@ -48,5 +48,6 @@ function determineWinner(userChoice, computerChoice) {
         return "You win!";
     }
 
+    console.log("You lose!");
     return "You lose!";
 }
