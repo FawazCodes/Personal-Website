@@ -20,8 +20,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('background.gif') no-repeat center center fixed;
-    background-size: cover;
+    background-color: black;
     color: #f1f1f1;
 }
 
@@ -32,7 +31,7 @@ body {
 .container {
     text-align: center;
     padding: 2rem;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 1rem;
     max-width: 90%;
     margin-bottom: 2rem;
@@ -40,6 +39,11 @@ body {
 
 h1 {
     margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+p {
+    color: #ffffff;
 }
 
 .button {
