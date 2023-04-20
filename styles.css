@@ -1,5 +1,5 @@
-/* Load fonts */
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+
 @font-face {
     font-family: 'Vazir Matn';
     src: url('Vazirmatn-Regular.woff2') format('woff2');
@@ -7,7 +7,6 @@
     font-style: normal;
 }
 
-/* General styles */
 * {
     margin: 0;
     padding: 0;
@@ -16,109 +15,99 @@
 
 body {
     font-family: 'Overpass', sans-serif;
-    background-color: #000;
-    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: black;
+    color: #f1f1f1;
 }
 
 .container {
     text-align: center;
     padding: 2rem;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 2rem;
     max-width: 90%;
-    margin: auto;
+    margin: 0 auto;
+    margin-bottom: 2rem;
 }
 
 h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-}
-
-p {
-    font-size: 1.2rem;
     margin-bottom: 1rem;
 }
 
 .button {
     display: inline-block;
-    background-color: #42e695;
-    color: #fff;
-    font-size: 1.2rem;
-    padding: 0.8rem 2.5rem;
-    border-radius: 0.5rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
+    background: #42e695;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border-radius: 50px; /* Updated for squircle effect */
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin: 0.5rem;
+    transition: background 0.3s;
 }
 
 .button:hover {
-    background-color: #f06;
+    background: #f06;
+}
+
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #f06;
+}
+
+.button:active {
+    transform: translateY(2px);
 }
 
 .game {
     display: flex;
     justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
     margin-bottom: 1rem;
 }
 
 .game-btn {
     margin: 0.5rem;
-    font-size: 1.2rem;
-    padding: 0.8rem 2.5rem;
-    border-radius: 0.5rem;
-    background-color: #42e695;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: 0.1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.game-btn:hover {
-    background-color: #f06;
+    border-radius: 50px; /* Updated for squircle effect */
 }
 
 .game-btn[aria-selected="true"] {
     background-color: #f06;
-    color: #fff;
+    color: #ffffff;
 }
 
 .result {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-top: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f06;
 }
 
-.gif {
-    width: 100%;
-    height: auto;
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 1rem;
 }
 
-/* Media queries */
-@media only screen and (max-width: 767px) {
+/* Vendor prefixes */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+@media only screen and (max-width: 600px) {
     .container {
+        border-radius: 0;
         padding: 1rem;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    p {
-        font-size: 1rem;
-    }
-
-    .button,
-    .game-btn {
-        font-size: 1rem;
-        padding: 0.5rem 1.5rem;
-    }
-
-    .result {
-        font-size: 1.2rem;
     }
 }
