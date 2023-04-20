@@ -7,49 +7,36 @@
     font-style: normal;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Overpass', sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: black;
-    color: #f1f1f1;
+    background: url('dvd.gif') no-repeat center center fixed;
+    background-size: cover;
 }
 
 .container {
-  text-align: center;
-  padding: 2rem;
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 50px;
-  width: 90%;
-  max-width: 600px;
-  margin: 0 auto;
-  margin-bottom: 2rem;
-  overflow: hidden;
-  position: relative;
-}
-
+    text-align: center;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 2rem;
+    width: 80%;
+    margin: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    position: relative;
 }
 
 h1 {
     margin-bottom: 1rem;
+    font-size: 2.5rem;
 }
 
 .button {
     display: inline-block;
     background: #42e695;
-    padding: 0.5rem 1.5rem;
-    font-size: 1.1rem;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
     color: #ffffff;
-    border-radius: 50px; /* Updated for squircle effect */
+    border-radius: 50%;
     cursor: pointer;
     margin: 0.5rem;
     transition: background 0.3s;
@@ -77,7 +64,6 @@ h1 {
 
 .game-btn {
     margin: 0.5rem;
-    border-radius: 50px; /* Updated for squircle effect */
 }
 
 .game-btn[aria-selected="true"] {
@@ -89,6 +75,7 @@ h1 {
     font-size: 1.2rem;
     font-weight: bold;
     color: #f06;
+    margin-top: 2rem;
 }
 
 footer {
@@ -107,11 +94,21 @@ footer {
 body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
     .container {
-        border-radius: 0;
-        padding: 1rem;
+        width: 90%;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .button {
+        font-size: 1rem;
     }
 }
