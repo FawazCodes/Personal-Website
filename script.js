@@ -87,88 +87,86 @@ paper.addEventListener('click', () => playRound('paper'));
 scissors.addEventListener('click', () => playRound('scissors'));
 
 // Add event listener to the curiouscat button
-document.getElementById("curiouscat").addEventListener("click", function() {
-window.open("https://curiouscat.me/idkwallah");
-});
+curiouscat.addEventListener('click', () => window.open('https://curiouscat.live/Idkwallah'));
 
 // Function to play a random win sound
 function playWinSound() {
-var sounds = ["win-sound.mp3", "win-sound2.mp3", "win-sound3.mp3", "win-sound4.mp3"];
-var randSound = sounds[Math.floor(Math.random() * sounds.length)];
-var audio = new Audio(randSound);
-audio.loop = true;
-audio.play();
+  var sounds = ["win-sound.mp3", "win-sound2.mp3", "win-sound3.mp3", "win-sound4.mp3"];
+  var randSound = sounds[Math.floor(Math.random() * sounds.length)];
+  var audio = new Audio(randSound);
+  audio.loop = true;
+  audio.play();
 }
 
 // Function to stop playing the win sound
 function stopWinSound() {
-var audio = document.querySelector("audio");
-audio.pause();
+  var audio = document.querySelector("audio");
+  audio.pause();
 }
 
 // Function to switch the background when player wins
 function changeBackground() {
-var backgrounds = ["background.gif", "background2.gif"];
-var randBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
-document.body.style.backgroundImage = "url(" + randBg + ")";
+  var backgrounds = ["background.gif", "background2.gif"];
+  var randBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+  document.body.style.backgroundImage = "url(" + randBg + ")";
 }
 
 // Add event listener to the play button
 document.getElementById("play").addEventListener("click", function() {
-// Get the user's choice
-var userChoice = document.querySelector("input[name='choice']:checked").value;
-// Get the computer's choice
-var computerChoice = Math.random();
-if (computerChoice < 0.34) {
-computerChoice = "rock";
-} else if (computerChoice <= 0.67) {
-computerChoice = "paper";
-} else {
-computerChoice = "scissors";
-}
+  // Get the user's choice
+  var userChoice = document.querySelector("input[name='choice']:checked").value;
+  // Get the computer's choice
+  var computerChoice = Math.random();
+  if (computerChoice < 0.34) {
+    computerChoice = "rock";
+  } else if (computerChoice <= 0.67) {
+    computerChoice = "paper";
+  } else {
+    computerChoice = "scissors";
+  }
 
-// Determine the winner
-var result = "";
-if (userChoice === computerChoice) {
-result = "It's a tie!";
-} else if (userChoice === "rock") {
-if (computerChoice === "paper") {
-result = "You lose! 😔";
-} else {
-result = "You win! 🎉";
-changeBackground();
-playWinSound();
-}
-} else if (userChoice === "paper") {
-if (computerChoice === "scissors") {
-result = "You lose! 😔";
-} else {
-result = "You win! 🎉";
-changeBackground();
-playWinSound();
-}
-} else if (userChoice === "scissors") {
-if (computerChoice === "rock") {
-result = "You lose! 😔";
-} else {
-result = "You win! 🎉";
-changeBackground();
-playWinSound();
-}
-}
+  // Determine the winner
+  var result = "";
+  if (userChoice === computerChoice) {
+    result = "It's a tie!";
+  } else if (userChoice === "rock") {
+    if (computerChoice === "paper") {
+      result = "You lose! 😔";
+    } else {
+      result = "You win! 🎉";
+      changeBackground();
+      playWinSound();
+    }
+  } else if (userChoice === "paper") {
+    if (computerChoice === "scissors") {
+      result = "You lose! 😔";
+    } else {
+      result = "You win! 🎉";
+      changeBackground();
+      playWinSound();
+    }
+  } else if (userChoice === "scissors") {
+    if (computerChoice === "rock") {
+      result = "You lose! 😔";
+    } else {
+      result = "You win! 🎉";
+      changeBackground();
+      playWinSound();
+    }
+  }
 
-// Update the result text
-document.getElementById("result").innerHTML = result;
+  // Update the result text
+  document.getElementById("result").innerHTML = result;
 });
 
 // Add event listener to the stop button
 document.getElementById("stop").addEventListener("click", function() {
-stopWinSound();
+  stopWinSound();
 });
 
 // Add event listener to the reset button
 document.getElementById("reset").addEventListener("click", function() {
-document.getElementById("result").innerHTML = "";
-stopWinSound();
-document.body.style.backgroundImage = "url(dvd.gif)";
+  document.getElementById("result").innerHTML = "";
+  stopWinSound();
+  document.body.style.backgroundImage = "url(dvd.gif)";
 });
