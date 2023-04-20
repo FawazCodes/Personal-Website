@@ -22,6 +22,8 @@ body {
     background-position: center;
     height: 100vh;
     overflow: hidden;
+    font-family: "Overpass", sans-serif;
+    color: #fff;
 }
 
 .container {
@@ -39,12 +41,12 @@ body {
 }
 
 h1 {
-    color: #fff;
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 30px;
-    font-family: "Overpass", sans-serif;
     text-align: center;
+    color: #fff;
+    margin-top: 10px;
 }
 
 .score-board {
@@ -56,10 +58,8 @@ h1 {
 }
 
 .score-board p {
-    color: #fff;
     font-size: 24px;
     font-weight: 700;
-    font-family: "Overpass", sans-serif;
 }
 
 .choice {
@@ -74,16 +74,13 @@ h1 {
 }
 
 .choice i {
-    color: #fff;
     font-size: 72px;
 }
 
 .result {
-    color: #fff;
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 30px;
-    font-family: "Overpass", sans-serif;
     text-align: center;
 }
 
@@ -98,11 +95,9 @@ h1 {
     transition: all 0.3s ease;
     font-size: 24px;
     font-weight: 700;
-    font-family: "Overpass", sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #000;
 }
 
 .button:hover {
@@ -131,4 +126,127 @@ h1 {
 /* Active Effect */
 .button:active {
     box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Text in buttons centered */
+.button span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Curiouscat button */
+.curiouscat {
+    background-color: #FDD536;
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "Overpass", sans-serif;
+    padding: 10px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+}
+
+.curiouscat:hover {
+    background-color: #fff;
+    color: #FDD536;
+}
+
+/* Game buttons */
+.game {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.game-btn {
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+    color: #000;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "Overpass", sans-serif;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.game-btn:hover {
+    transform: scale(1.1);
+}
+
+.game-btn:active {
+    box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Result text */
+.result {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: "Overpass", sans-serif;
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Messages */
+.message-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+}
+
+.message-container.show {
+    display: flex;
+}
+
+.message-text {
+    font-size: 36px;
+    font-weight: 700;
+    font-family: "Overpass", sans-serif;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.win-message {
+    color: #fff;
+    background-color: #00FF00;
+}
+
+.lose-message {
+    color: #fff;
+    background-color: #FF0000;
+}
+
+.tie-message {
+    color: #000;
+    background-color: #FFFF00;
+}
+
+/* Win background */
+.win-background {
+    background-image: url(background2.gif);
+    background-size: cover;
+    background-position: center;
+    transition: all 1s ease;
 }
