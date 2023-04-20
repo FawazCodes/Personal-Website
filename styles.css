@@ -102,6 +102,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #000;
 }
 
 .button:hover {
@@ -124,7 +125,7 @@ h1 {
 
 /* Hover Effect */
 .button:hover {
-    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* Active Effect */
