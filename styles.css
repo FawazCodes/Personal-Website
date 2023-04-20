@@ -6,12 +6,6 @@
     font-weight: normal;
     font-style: normal;
 }
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
     font-family: 'Overpass', sans-serif;
@@ -20,13 +14,13 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: black; /* Set initial background to black */
+    background: url('background.gif') no-repeat center center fixed;
+    background-size: cover;
     color: #f1f1f1;
 }
-}
 
-.arabic {
-    font-family: 'Vazir Matn', sans-serif;
+h1, h2 {
+    font-family: 'Vazir Matn', 'Overpass', sans-serif;
 }
 
 .container {
