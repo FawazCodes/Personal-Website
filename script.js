@@ -87,7 +87,7 @@ paper.addEventListener('click', () => playRound('paper'));
 scissors.addEventListener('click', () => playRound('scissors'));
 
 // Add event listener to the curiouscat button
-curiouscat.addEventListener('click', () => window.open('https://curiouscat.live/Idkwallah'));
+curiouscat.addEventListener('click', () => window.location.href = 'https://curiouscat.live/Idkwallah');
 
 // Function to play a random win sound
 function playWinSound() {
@@ -170,3 +170,4 @@ document.getElementById("reset").addEventListener("click", function() {
   stopWinSound();
   document.body.style.backgroundImage = "url(dvd.gif)";
 });
+
