@@ -1,122 +1,138 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
 @font-face {
-font-family: 'Vazir Matn';
-src: url('Vazirmatn-Regular.woff2') format('woff2');
-font-weight: normal;
-font-style: normal;
+    font-family: 'Vazir Matn';
+    src: url('Vazirmatn-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-margin: 0;
-padding: 0;
-font-family: 'Overpass', sans-serif;
-background: url('dvd.gif') no-repeat center center fixed;
-background-size: cover;
+    background-image: url('dvd.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-family: 'Overpass', sans-serif;
+    color: white;
 }
 
 .container {
-background-color: rgba(255, 255, 255, 0.7);
-border-radius: 1rem;
-max-width: 90%;
-margin: auto;
-padding: 2rem;
-text-align: center;
+    margin: 0 auto;
+    max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    padding: 40px;
 }
 
 h1 {
-margin-bottom: 1rem;
-font-weight: bold;
-font-size: 2rem;
+    font-size: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
 }
 
-h2 {
-margin-top: 2rem;
-margin-bottom: 1rem;
-font-weight: bold;
-font-size: 1.5rem;
+.btn {
+    background-color: white;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    text-transform: uppercase;
+    font-family: 'Overpass', sans-serif;
 }
 
-p {
-margin-top: 1rem;
-margin-bottom: 1rem;
-font-size: 1.2rem;
+.btn:hover {
+    transform: scale(1.1);
 }
 
-button {
-display: inline-block;
-padding: 1rem;
-font-size: 1.2rem;
-color: #fff;
-background-color: #42e695;
-border: none;
-border-radius: 50%;
-margin: 0.5rem;
-cursor: pointer;
-transition: all 0.2s;
+.btn:active {
+    transform: scale(0.9);
 }
 
-button:hover {
-transform: scale(1.1);
+.btn--play {
+    background-color: #1abc9c;
+    color: white;
 }
 
-button:focus {
-outline: none;
+.btn--playAgain {
+    background-color: #2980b9;
+    color: white;
 }
 
-.game-btn {
-width: 8rem;
-height: 8rem;
-background-color: #42e695;
-color: #fff;
-font-size: 2rem;
-border-radius: 50%;
-margin: 0.5rem;
-cursor: pointer;
-transition: all 0.2s;
+.btn--curiouscat {
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 0 20px 20px 0;
+    margin-bottom: 0;
+    margin-right: 0;
+    width: auto;
+    padding: 10px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 999;
+    text-align: center;
 }
 
-.game-btn:hover {
-transform: scale(1.1);
+.btn--curiouscat:hover {
+    background-color: #c0392b;
 }
 
-.game-btn:focus {
-outline: none;
-}
-
-.game-btn[aria-selected="true"] {
-background-color: #f06;
-color: #fff;
-}
-
-.result {
-font-size: 1.5rem;
-font-weight: bold;
-margin-top: 1rem;
-margin-bottom: 1rem;
-}
-
-.background {
-position: fixed;
-top: 0;
-left: 0;
-width: 100%;
-height: 100%;
-z-index: -1;
-background-repeat: no-repeat;
-background-size: cover;
-transition: all 0.2s;
-}
-
-.squircle {
-clip-path: circle(50% at 50% 50%);
--webkit-clip-path: circle(50% at 50% 50%);
+.btn--curiouscat i {
+    font-size: 30px;
 }
 
 .win-message {
-color: #42e695;
-font-weight: bold;
-font-size: 1.2rem;
-margin-top: 0.5rem;
-margin-bottom: 0.5rem;
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #1abc9c;
 }
 
+.lose-message {
+    font-size: 28px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #e74c3c;
+}
+
+/* Media queries */
+
+@media (max-width: 500px) {
+    .container {
+        width: 100%;
+        border-radius: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+
+    .btn {
+        font-size: 18px;
+        padding: 8px 16px;
+        border-radius: 30px;
+        margin-bottom: 10px;
+    }
+
+    .btn--curiouscat {
+        border-radius: 20px;
+        margin-bottom: 20px;
+        margin-right
