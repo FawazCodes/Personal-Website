@@ -1,4 +1,3 @@
-/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
 
 @font-face {
@@ -7,8 +6,7 @@
     font-weight: normal;
     font-style: normal;
 }
-
-/* Main Styles */
+}
 * {
     margin: 0;
     padding: 0;
@@ -16,237 +14,105 @@
 }
 
 body {
-    background-image: url("dvd.gif");
-    background-repeat: no-repeat;
+    font-family: 'Overpass', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('background.gif') no-repeat center center fixed;
     background-size: cover;
-    background-position: center;
-    height: 100vh;
-    overflow: hidden;
-    font-family: "Overpass", sans-serif;
-    color: #fff;
+    color: #f1f1f1;
+}
+
+.arabic {
+    font-family: 'Vazir Matn', sans-serif;
 }
 
 .container {
-    width: 90%;
-    height: 85vh;
-    max-width: 400px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 30px;
-    backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 1rem;
+    max-width: 90%;
+    margin-bottom: 2rem;
 }
 
 h1 {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 30px;
-    text-align: center;
-    color: #fff;
-    margin-top: 10px;
+    margin-bottom: 1rem;
 }
 
-.score-board {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
-    margin-bottom: 20px;
-}
-
-.score-board p {
-    font-size: 24px;
-    font-weight: 700;
-}
-
-.choice {
-    border: 6px solid #fff;
-    border-radius: 50%;
-    width: 150px;
-    height: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.choice i {
-    font-size: 72px;
-}
-
-.result {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-/* Buttons */
 .button {
-    background-color: #fff;
-    border: none;
-    border-radius: 30px;
-    padding: 10px 50px;
-    margin: 10px;
+    display: inline-block;
+    background: #42e695;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.1rem;
+    color: #ffffff;
+    border-radius: 0.5rem;
     cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 24px;
-    font-weight: 700;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0.5rem;
+    transition: background 0.3s, transform 0.3s;
 }
 
 .button:hover {
+    background: #f06;
     transform: scale(1.1);
 }
 
-/* Squircle */
-.button {
-    clip-path: polygon(
-        0 10%,
-        10% 0,
-        90% 0,
-        100% 10%,
-        100% 90%,
-        90% 100%,
-        10% 100%,
-        0 90%
-    );
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #f06;
 }
 
-/* Hover Effect */
-.button:hover {
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Active Effect */
 .button:active {
-    box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(2px);
 }
 
-/* Text in buttons centered */
-.button span {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Curiouscat button */
-.curiouscat {
-    background-color: #FDD536;
-    color: #fff;
-    font-size: 24px;
-    font-weight: 700;
-    font-family: "Overpass", sans-serif;
-    padding: 10px 20px;
-    border-radius: 50px;
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
-    margin-top: 30px;
-}
-
-.curiouscat:hover {
-    background-color: #fff;
-    color: #FDD536;
-}
-
-/* Game buttons */
 .game {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    flex-wrap: wrap;
+   
+    margin-bottom: 1rem;
 }
 
 .game-btn {
-    width: 100px;
-    height: 100px;
-    background-color: #fff;
-    color: #000;
-    font-size: 24px;
-    font-weight: 700;
-    font-family: "Overpass", sans-serif;
-    padding: 10px;
-    border: none;
-    border-radius: 50%;
-    margin-right: 10px;
-    margin-left: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: all 0.3s ease;
+    margin: 0.5rem;
 }
 
-.game-btn:hover {
-    transform: scale(1.1);
+.game-btn[aria-selected="true"] {
+    background-color: #f06;
+    color: #ffffff;
 }
 
-.game-btn:active {
-    box-shadow: inset 0px 0px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Result text */
 .result {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 700;
-    font-family: "Overpass", sans-serif;
-    margin-top: 20px;
-    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #f06;
 }
 
-/* Messages */
-.message-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.9);
-    z-index: 1;
+/* Responsive design */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .container {
+        max-width: 100%;
+    }
 }
 
-.message-container.show {
-    display: flex;
+/* Vendor1 prefixes */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-.message-text {
-    font-size: 36px;
-    font-weight: 700;
-    font-family: "Overpass", sans-serif;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.win-message {
-    color: #fff;
-    background-color: #00FF00;
-}
-
-.lose-message {
-    color: #fff;
-    background-color: #FF0000;
-}
-
-.tie-message {
-    color: #000;
-    background-color: #FFFF00;
-}
-
-/* Win background */
-.win-background {
-    background-image: url(background2.gif);
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
     background-size: cover;
-    background-position: center;
-    transition: all 1s ease;
 }
