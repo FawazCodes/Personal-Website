@@ -1,5 +1,5 @@
+/* Load fonts */
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
-
 @font-face {
     font-family: 'Vazir Matn';
     src: url('Vazirmatn-Regular.woff2') format('woff2');
@@ -7,118 +7,118 @@
     font-style: normal;
 }
 
-/* Set up basic styles for the page */
+/* General styles */
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-}
-
-html,
-body {
-    height: 100%;
 }
 
 body {
     font-family: 'Overpass', sans-serif;
-    background-color: black;
-    color: white;
-    margin: 0;
-    padding: 0;
+    background-color: #000;
+    color: #fff;
 }
 
-/* Center the container horizontally and vertically */
 .container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 1rem;
-    padding: 2rem;
-    max-width: 90%;
-}
-
-/* Add a box shadow to the container */
-.container {
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
-}
-
-/* Add some padding to the header and adjust the font size */
-.container h1 {
-    font-size: 2.5rem;
-    padding: 1rem 0;
-}
-
-/* Add some margin to the paragraph and adjust the font size */
-.container p {
-    font-size: 1.2rem;
-    margin: 1rem 0;
     text-align: center;
+    padding: 2rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 1rem;
+    max-width: 90%;
+    margin: auto;
 }
 
-/* Style the game buttons */
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.button {
+    display: inline-block;
+    background-color: #42e695;
+    color: #fff;
+    font-size: 1.2rem;
+    padding: 0.8rem 2.5rem;
+    border-radius: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #f06;
+}
+
 .game {
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    margin: 1rem 0;
+    margin-bottom: 1rem;
 }
 
 .game-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #42e695;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 0.5rem;
-    padding: 0.8rem 1.2rem;
     margin: 0.5rem;
-    transition: transform 0.3s;
+    font-size: 1.2rem;
+    padding: 0.8rem 2.5rem;
+    border-radius: 0.5rem;
+    background-color: #42e695;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .game-btn:hover {
-    transform: scale(1.1);
+    background-color: #f06;
 }
 
-.game-btn:active {
-    transform: scale(0.9);
+.game-btn[aria-selected="true"] {
+    background-color: #f06;
+    color: #fff;
 }
 
-/* Style the result text */
 .result {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: green;
-    text-align: center;
-    margin: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 1rem;
 }
 
-/* Add media queries for smaller screens */
-@media screen and (max-width: 600px) {
-    /* Center the container vertically */
+.gif {
+    width: 100%;
+    height: auto;
+}
+
+/* Media queries */
+@media only screen and (max-width: 767px) {
     .container {
-        top: 40%;
+        padding: 1rem;
     }
 
-    /* Adjust the font sizes */
-    .container h1 {
+    h1 {
         font-size: 2rem;
     }
 
-    .container p {
+    p {
         font-size: 1rem;
     }
 
+    .button,
     .game-btn {
         font-size: 1rem;
-        padding: 0.6rem 0.8rem;
-        margin: 0.3rem;
+        padding: 0.5rem 1.5rem;
+    }
+
+    .result {
+        font-size: 1.2rem;
     }
 }
