@@ -14,7 +14,7 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Overpass', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,18 +25,17 @@ body {
     color: #f1f1f1;
 }
 
+.arabic {
+    font-family: 'Vazir Matn', sans-serif;
+}
+
 .container {
-    font-family: 'Overpass', sans-serif;
     text-align: center;
     padding: 2rem;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 1rem;
     max-width: 90%;
     margin-bottom: 2rem;
-}
-
-h1, p {
-    font-family: 'Vazir Matn', sans-serif;
 }
 
 h1 {
