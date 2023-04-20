@@ -32,6 +32,49 @@
         <p id="result" class="result"></p>
         <p class="arabic">الموقع مسويه ابو جبت, انا سمعت كلامه بس.</p>
     </div>
-    <audio id="winAudio" src="win-sound.mp3" preload="auto"></audio>
-</body>
-</html>
+    <audio id="winAudio" preload="auto"></audio>
+    <script>
+        // Set up win sounds array
+        const winSounds = [
+          'win-sound.mp3',
+          'win-sound2.mp3',
+          'win-sound3.mp3',
+          'win-sound4.mp3'
+        ];
+        
+        // Randomly choose a win sound from array
+        const winSound = winSounds[Math.floor(Math.random() * winSounds.length)];
+        
+        // Set audio source to the chosen win sound
+        document.getElementById('winAudio').src = winSound;
+        
+        // Function to play win sound
+        function playWinSound() {
+          document.getElementById('winAudio').currentTime = 0;
+          document.getElementById('winAudio').play();
+        }
+        
+        // Function to change background image
+        function changeBackground() {
+          const backgrounds = ['background.gif', 'background2.gif'];
+          const randBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+          document.body.style.backgroundImage = `url('${randBg}')`;
+        }
+        
+        // Play win sound and change background image on win
+        function win(choice) {
+          playWinSound();
+          changeBackground();
+          document.getElementById('result').innerHTML = `You win! 🎉`;
+          document.getElementById('result').classList.add('win');
+        }
+        
+        // Play lose sound on loss
+        function lose() {
+          document.getElementById('result').innerHTML = `You lose! 😔`;
+          document.getElementById('result').classList.remove('win');
+        }
+        
+        // Set up game logic
+        const gameButtons = document.querySelectorAll('.game-btn');
+        gameButtons.forEach((button)
