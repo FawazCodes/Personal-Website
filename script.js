@@ -1,86 +1,174 @@
-// Variables to store the score and player's choice
-let playerScore = 0;
-let computerScore = 0;
-let playerChoice = "";
+// Define all of the buttons
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+const curiouscat = document.querySelector('.curiouscat');
 
-// Variables to store the DOM elements
-const playerScoreElement = document.getElementById("player-score");
-const computerScoreElement = document.getElementById("computer-score");
-const resultTextElement = document.getElementById("result-text");
-const rockButton = document.getElementById("rock-button");
-const paperButton = document.getElementById("paper-button");
-const scissorsButton = document.getElementById("scissors-button");
-const curiouscatButton = document.getElementById("curiouscat-button");
+// Define the audio files
+const winSounds = ['win-sound.mp3', 'win-sound2.mp3', 'win-sound3.mp3', 'win-sound4.mp3'];
+const loseSound = new Audio('lose-sound.mp3');
+const tieSound = new Audio('tie-sound.mp3');
+let winSound;
 
-// Array to store the win sounds
-const winSounds = ["win-sound.mp3", "win-sound2.mp3", "win-sound3.mp3", "win-sound4.mp3"];
+// Define the message text and elements
+const messageText = document.querySelector('.message-text');
+const messageContainer = document.querySelector('.message-container');
 
-// Function to play the win sound
+// Define the container element
+const container = document.querySelector('.container');
+
+// Define the function to generate the computer's choice
+function computerPlay() {
+  const choices = ['rock', 'paper', 'scissors'];
+  const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+  return computerChoice;
+}
+
+// Define the function to play the win sound
 function playWinSound() {
-  const randomIndex = Math.floor(Math.random() * winSounds.length);
-  const audio = new Audio(winSounds[randomIndex]);
-  audio.loop = true;
-  audio.play();
+  winSound = new Audio(winSounds[Math.floor(Math.random() * winSounds.length)]);
+  winSound.loop = true;
+  winSound.play();
 }
 
-// Function to reset the game
+// Define the function to stop the win sound
+function stopWinSound() {
+  winSound.pause();
+  winSound.currentTime = 0;
+}
+
+// Define the function to show the win message
+function showWinMessage(playerSelection, computerSelection) {
+  messageText.innerHTML = `🎉 You won! ${playerSelection} beats ${computerSelection}! 🎉`;
+  messageContainer.classList.add('win-message');
+  container.classList.add('win-background');
+}
+
+// Define the function to show the lose message
+function showLoseMessage(playerSelection, computerSelection) {
+  messageText.textContent = `😞 You lost! ${computerSelection} beats ${playerSelection}. 😞`;
+  messageContainer.classList.add('lose-message');
+}
+
+// Define the function to show the tie message
+function showTieMessage(playerSelection) {
+  messageText.textContent = `🤝 It's a tie! You both chose ${playerSelection}. 🤝`;
+  messageContainer.classList.add('tie-message');
+}
+
+// Define the function to reset the game
 function resetGame() {
-  playerScore = 0;
-  computerScore = 0;
-  playerScoreElement.textContent = "0";
-  computerScoreElement.textContent = "0";
-  resultTextElement.textContent = "Make your move!";
+  messageText.textContent = 'Choose your weapon!';
+  messageContainer.classList.remove('win-message', 'lose-message', 'tie-message');
+  container.classList.remove('win-background');
+  stopWinSound();
 }
 
-// Function to update the score
-function updateScore(playerWon) {
-  if (playerWon) {
-    playerScore++;
-    playerScoreElement.textContent = playerScore.toString();
-    resultTextElement.innerHTML = `<span class="win-text">You win! &#x1F389;</span> ${playerChoice} beats ${computerChoice}`;
+// Define the function to play a round of rock-paper-scissors
+function playRound(playerSelection) {
+  const computerSelection = computerPlay();
+  if (playerSelection === 'rock' && computerSelection === 'scissors' ||
+      playerSelection === 'paper' && computerSelection === 'rock' ||
+      playerSelection === 'scissors' && computerSelection === 'paper') {
     playWinSound();
+    showWinMessage(playerSelection, computerSelection);
+  } else if (playerSelection === computerSelection) {
+    tieSound.play();
+    showTieMessage(playerSelection);
   } else {
-    computerScore++;
-    computerScoreElement.textContent = computerScore.toString();
-    resultTextElement.innerHTML = `<span class="lose-text">You lose! &#x1F61E;</span> ${computerChoice} beats ${playerChoice}`;
+    loseSound.play();
+    showLoseMessage(playerSelection, computerSelection);
   }
 }
 
-// Function to handle the player's choice
-function handlePlayerChoice(choice) {
-  playerChoice = choice;
-  const computerChoice = getComputerChoice();
-  switch (choice + computerChoice) {
-    case "rockscissors":
-    case "paperrock":
-    case "scissorspaper":
-      updateScore(true);
-      break;
-    case "rockpaper":
-    case "paperscissors":
-    case "scissorsrock":
-      updateScore(false);
-      break;
-    default:
-      resultTextElement.textContent = "It's a tie!";
-      break;
-  }
-}
+// Add event listeners to all of the buttons
+rock.addEventListener('click', () => playRound('rock'));
+paper.addEventListener('click', () => playRound('paper'));
+scissors.addEventListener('click', () => playRound('scissors'));
 
-// Function to get the computer's choice
-function getComputerChoice() {
-  const choices = ["rock", "paper", "scissors"];
-  const randomIndex = Math.floor(Math.random() * choices.length);
-  return choices[randomIndex];
-}
-
-// Event listeners for the buttons
-rockButton.addEventListener("click", () => handlePlayerChoice("rock"));
-paperButton.addEventListener("click", () => handlePlayerChoice("paper"));
-scissorsButton.addEventListener("click", () => handlePlayerChoice("scissors"));
-curiouscatButton.addEventListener("click", () => {
-  window.location.href = "https://curiouscat.me/";
+// Add event listener to the curiouscat button
+document.getElementById("curiouscat").addEventListener("click", function() {
+window.open("https://curiouscat.me/idkwallah");
 });
 
-// Reset the game when the page is loaded
-resetGame();
+// Function to play a random win sound
+function playWinSound() {
+var sounds = ["win-sound.mp3", "win-sound2.mp3", "win-sound3.mp3", "win-sound4.mp3"];
+var randSound = sounds[Math.floor(Math.random() * sounds.length)];
+var audio = new Audio(randSound);
+audio.loop = true;
+audio.play();
+}
+
+// Function to stop playing the win sound
+function stopWinSound() {
+var audio = document.querySelector("audio");
+audio.pause();
+}
+
+// Function to switch the background when player wins
+function changeBackground() {
+var backgrounds = ["background.gif", "background2.gif"];
+var randBg = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+document.body.style.backgroundImage = "url(" + randBg + ")";
+}
+
+// Add event listener to the play button
+document.getElementById("play").addEventListener("click", function() {
+// Get the user's choice
+var userChoice = document.querySelector("input[name='choice']:checked").value;
+// Get the computer's choice
+var computerChoice = Math.random();
+if (computerChoice < 0.34) {
+computerChoice = "rock";
+} else if (computerChoice <= 0.67) {
+computerChoice = "paper";
+} else {
+computerChoice = "scissors";
+}
+
+// Determine the winner
+var result = "";
+if (userChoice === computerChoice) {
+result = "It's a tie!";
+} else if (userChoice === "rock") {
+if (computerChoice === "paper") {
+result = "You lose! 😔";
+} else {
+result = "You win! 🎉";
+changeBackground();
+playWinSound();
+}
+} else if (userChoice === "paper") {
+if (computerChoice === "scissors") {
+result = "You lose! 😔";
+} else {
+result = "You win! 🎉";
+changeBackground();
+playWinSound();
+}
+} else if (userChoice === "scissors") {
+if (computerChoice === "rock") {
+result = "You lose! 😔";
+} else {
+result = "You win! 🎉";
+changeBackground();
+playWinSound();
+}
+}
+
+// Update the result text
+document.getElementById("result").innerHTML = result;
+});
+
+// Add event listener to the stop button
+document.getElementById("stop").addEventListener("click", function() {
+stopWinSound();
+});
+
+// Add event listener to the reset button
+document.getElementById("reset").addEventListener("click", function() {
+document.getElementById("result").innerHTML = "";
+stopWinSound();
+document.body.style.backgroundImage = "url(dvd.gif)";
+});
