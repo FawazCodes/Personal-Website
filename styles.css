@@ -13,6 +13,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Overpass', sans-serif;
     display: flex;
@@ -20,30 +24,34 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: black;
+    background-color: #000;
     color: #f1f1f1;
-}
-
-.arabic {
-    font-family: 'Vazir Matn', sans-serif;
+    overflow-x: hidden;
 }
 
 .container {
     text-align: center;
     padding: 2rem;
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: 1rem;
     max-width: 90%;
     margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s;
+}
+
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
     margin-bottom: 1rem;
-    color: #ffffff;
 }
 
-p {
-    color: #ffffff;
+h1, p {
+    font-family: 'Vazir Matn', sans-serif;
 }
 
 .button {
@@ -55,7 +63,7 @@ p {
     border-radius: 0.5rem;
     cursor: pointer;
     margin: 0.5rem;
-    transition: background 0.3s, transform 0.3s;
+    transition: all 0.3s;
 }
 
 .button:hover {
@@ -83,19 +91,18 @@ p {
     margin: 0.5rem;
 }
 
-.game-btn[aria-selected="true"] {
-    background-color: #f06;
-    color: #ffffff;
-}
-
 .result {
     font-size: 1.2rem;
     font-weight: bold;
     color: #f06;
+    animation: fade-in 1s ease-out;
 }
 
-@media screen and (max-width: 600px) {
-    .container {
-        font-size: 0.9rem;
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
