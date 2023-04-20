@@ -2,7 +2,7 @@
 const result = document.getElementById("result");
 const gameButtons = document.querySelectorAll(".game-btn");
 const redirectBtn = document.getElementById("redirectBtn");
-const winAudio = document.getElementById("winAudio");
+const winAudio = new Audio("win-sound.mp3");
 
 // Add event listeners
 redirectBtn.addEventListener("click", () => {
@@ -35,6 +35,7 @@ function playWinAudio() {
 function determineWinner(userChoice, computerChoice) {
     console.log(`User choice: ${userChoice}, Computer choice: ${computerChoice}`);
     if (userChoice === computerChoice) {
+        result.style.color = ""; // Reset the text color to the default
         return "It's a tie!";
     }
 
@@ -45,9 +46,11 @@ function determineWinner(userChoice, computerChoice) {
     ) {
         playWinAudio();
         console.log("You win!");
+        result.style.color = "limegreen"; // Change the text color to green
         return "You win!";
     }
 
+    result.style.color = ""; // Reset the text color to the default
     console.log("You lose!");
     return "You lose!";
 }
