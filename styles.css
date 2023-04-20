@@ -13,10 +13,6 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     font-family: 'Overpass', sans-serif;
     display: flex;
@@ -35,31 +31,29 @@ body {
     }
 }
 
-}
-
 .container {
-    text-align: center;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 1rem;
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 1rem;
-    max-width: 90%;
-    margin-bottom: 2rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
-    transition: all 0.3s;
-}
-
-.container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15), 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    max-width: 80%;
 }
 
 h1 {
-    margin-bottom: 1rem;
+    margin: 1rem;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #f1f1f1;
 }
 
-h1, p {
-    font-family: 'Vazir Matn', sans-serif;
+p {
+    margin: 1rem;
+    font-size: 1.5rem;
+    color: #f1f1f1;
 }
 
 .button {
@@ -67,16 +61,16 @@ h1, p {
     background: #42e695;
     padding: 0.5rem 1.5rem;
     font-size: 1.1rem;
+    font-weight: 700;
     color: #ffffff;
     border-radius: 0.5rem;
     cursor: pointer;
     margin: 0.5rem;
-    transition: all 0.3s;
+    transition: background 0.3s;
 }
 
 .button:hover {
     background: #f06;
-    transform: scale(1.1);
 }
 
 .button:focus {
@@ -97,20 +91,47 @@ h1, p {
 
 .game-btn {
     margin: 0.5rem;
+    background-color: #f1f1f1;
+    color: #000;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    font-weight: 700;
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.game-btn:hover {
+    transform: scale(1.1);
+}
+
+.game-btn[aria-selected="true"] {
+    background-color: #f06;
+    color: #ffffff;
 }
 
 .result {
     font-size: 1.2rem;
     font-weight: bold;
     color: #f06;
-    animation: fade-in 1s ease-out;
+    margin: 1rem;
 }
 
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
 }
+
+.game-container img {
+    max-width: 100%;
+    height: auto;
+}
+
+footer {
+    text-align
