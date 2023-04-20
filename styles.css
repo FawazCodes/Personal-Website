@@ -1,114 +1,122 @@
 @import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
-
 @font-face {
-    font-family: 'Vazir Matn';
-    src: url('Vazirmatn-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
+font-family: 'Vazir Matn';
+src: url('Vazirmatn-Regular.woff2') format('woff2');
+font-weight: normal;
+font-style: normal;
 }
 
 body {
-    font-family: 'Overpass', sans-serif;
-    background: url('dvd.gif') no-repeat center center fixed;
-    background-size: cover;
+margin: 0;
+padding: 0;
+font-family: 'Overpass', sans-serif;
+background: url('dvd.gif') no-repeat center center fixed;
+background-size: cover;
 }
 
 .container {
-    text-align: center;
-    padding: 2rem;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 2rem;
-    width: 80%;
-    margin: auto;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    position: relative;
+background-color: rgba(255, 255, 255, 0.7);
+border-radius: 1rem;
+max-width: 90%;
+margin: auto;
+padding: 2rem;
+text-align: center;
 }
 
 h1 {
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
+margin-bottom: 1rem;
+font-weight: bold;
+font-size: 2rem;
 }
 
-.button {
-    display: inline-block;
-    background: #42e695;
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    color: #ffffff;
-    border-radius: 50%;
-    cursor: pointer;
-    margin: 0.5rem;
-    transition: background 0.3s;
+h2 {
+margin-top: 2rem;
+margin-bottom: 1rem;
+font-weight: bold;
+font-size: 1.5rem;
 }
 
-.button:hover {
-    background: #f06;
+p {
+margin-top: 1rem;
+margin-bottom: 1rem;
+font-size: 1.2rem;
 }
 
-.button:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #f06;
+button {
+display: inline-block;
+padding: 1rem;
+font-size: 1.2rem;
+color: #fff;
+background-color: #42e695;
+border: none;
+border-radius: 50%;
+margin: 0.5rem;
+cursor: pointer;
+transition: all 0.2s;
 }
 
-.button:active {
-    transform: translateY(2px);
+button:hover {
+transform: scale(1.1);
 }
 
-.game {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
+button:focus {
+outline: none;
 }
 
 .game-btn {
-    margin: 0.5rem;
+width: 8rem;
+height: 8rem;
+background-color: #42e695;
+color: #fff;
+font-size: 2rem;
+border-radius: 50%;
+margin: 0.5rem;
+cursor: pointer;
+transition: all 0.2s;
+}
+
+.game-btn:hover {
+transform: scale(1.1);
+}
+
+.game-btn:focus {
+outline: none;
 }
 
 .game-btn[aria-selected="true"] {
-    background-color: #f06;
-    color: #ffffff;
+background-color: #f06;
+color: #fff;
 }
 
 .result {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #f06;
-    margin-top: 2rem;
+font-size: 1.5rem;
+font-weight: bold;
+margin-top: 1rem;
+margin-bottom: 1rem;
 }
 
-footer {
-    text-align: center;
-    font-size: 0.9rem;
-    padding: 1rem;
+.background {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1;
+background-repeat: no-repeat;
+background-size: cover;
+transition: all 0.2s;
 }
 
-/* Vendor prefixes */
-* {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+.squircle {
+clip-path: circle(50% at 50% 50%);
+-webkit-clip-path: circle(50% at 50% 50%);
 }
 
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
+.win-message {
+color: #42e695;
+font-weight: bold;
+font-size: 1.2rem;
+margin-top: 0.5rem;
+margin-bottom: 0.5rem;
 }
 
-@media only screen and (max-width: 768px) {
-    .container {
-        width: 90%;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    .button {
-        font-size: 1rem;
-    }
-}
