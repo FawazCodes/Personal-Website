@@ -1,7 +1,10 @@
 document.addEventListener("DOMContentLoaded", function() {
+  const instagram = document.getElementById("instagram");
+
   document.getElementById("curiousCat").onclick = function() {
     window.location.href = "https://curiouscat.live/Idkwallah";
   };
+
   const rock = document.getElementById("rock");
   const paper = document.getElementById("paper");
   const scissors = document.getElementById("scissors");
@@ -80,5 +83,9 @@ document.addEventListener("DOMContentLoaded", function() {
   });
   scissors.addEventListener("click", function() {
     playRound("scissors");
+  });
+
+  instagram.addEventListener("click", function() {
+    window.location.href = "https://www.instagram.com/mamathinkimblessed/";
   });
 });
