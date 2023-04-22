@@ -1,1 +1,84 @@
-document.addEventListener("DOMContentLoaded",(function(){document.getElementById("curiousCat").onclick=function(){window.location.href="https://curiouscat.live/Idkwallah"};const o=document.getElementById("rock"),n=document.getElementById("paper"),e=document.getElementById("scissors"),r=document.getElementById("result"),t=new Image;t.onload=function(){document.body.style.backgroundImage=`url('${t.src}')`},t.onerror=function(){console.error(`Error loading ${t.src}`)},t.src="dvd.gif";const c=[{src:"background.gif",loaded:!1},{src:"background2.gif",loaded:!1}];function s(o){const n=function(){const o=["rock","paper","scissors"];return o[Math.floor(Math.random()*o.length)]}(),e=(t=o)===(s=n)?"tie":"rock"===t&&"scissors"===s||"paper"===t&&"rock"===s||"scissors"===t&&"paper"===s?"win":"lose";var t,s;if("win"===e){let o;do{o=Math.floor(Math.random()*c.length)}while(!c[o].loaded);const n=c[o],e=new Audio;e.preload="auto",e.src=`win-sound${Math.floor(4*Math.random())+1}.mp3`,e.play(),document.body.style.backgroundImage=`url('${n.src}')`}let d,i,a;"tie"===e?(d="It's a Tie",i="😐",a="white"):"win"===e?(d="You Won!!!",i="🥳",a="green"):(d="You Lost...",i="😢",a="red"),r.innerHTML=`${d} ${i}<br>Computer chose ${n} ${"rock"===n?"🪨":"paper"===n?"📄":"✂️"}`,r.style.color=a}c.forEach((function(o){const n=new Image;n.onload=function(){o.loaded=!0},n.onerror=function(){console.error(`Error loading ${n.src}`)},n.src=o.src,o.img=n})),o.addEventListener("click",(function(){s("rock")})),n.addEventListener("click",(function(){s("paper")})),e.addEventListener("click",(function(){s("scissors")}))}));
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("curiousCat").onclick = function() {
+    window.location.href = "https://curiouscat.live/Idkwallah";
+  };
+  const rock = document.getElementById("rock");
+  const paper = document.getElementById("paper");
+  const scissors = document.getElementById("scissors");
+  const result = document.getElementById("result");
+  const background = new Image();
+  background.onload = function() {
+    document.body.style.backgroundImage = `url('${background.src}')`;
+  };
+  background.onerror = function() {
+    console.error(`Error loading ${background.src}`);
+  };
+  background.src = "dvd.gif";
+  const backgrounds = [
+    { src: "background.gif", loaded: false },
+    { src: "background2.gif", loaded: false }
+  ];
+  function preloadImage(obj) {
+    const image = new Image();
+    image.onload = function() {
+      obj.loaded = true;
+    };
+    image.onerror = function() {
+      console.error(`Error loading ${image.src}`);
+    };
+    image.src = obj.src;
+    obj.img = image;
+  }
+  backgrounds.forEach(preloadImage);
+  function playRound(playerChoice) {
+    const computerChoice = (function() {
+      const choices = ["rock", "paper", "scissors"];
+      return choices[Math.floor(Math.random() * choices.length)];
+    })();
+    const outcome = (playerChoice === computerChoice) ? "tie"
+                 : (playerChoice === "rock" && computerChoice === "scissors") ||
+                   (playerChoice === "paper" && computerChoice === "rock") ||
+                   (playerChoice === "scissors" && computerChoice === "paper")
+                   ? "win" : "lose";
+    if (outcome === "win") {
+      let index;
+      do {
+        index = Math.floor(Math.random() * backgrounds.length);
+      } while (!backgrounds[index].loaded);
+      const background = backgrounds[index];
+      const audio = new Audio();
+      audio.preload = "auto";
+      audio.src = `win-sound${Math.floor(4 * Math.random()) + 1}.mp3`;
+      audio.play();
+      document.body.style.backgroundImage = `url('${background.src}')`;
+    }
+    let message, icon, color;
+    if (outcome === "tie") {
+      message = "It's a Tie";
+      icon = "😐";
+      color = "white";
+    } else if (outcome === "win") {
+      message = "You Won!!!";
+      icon = "🥳";
+      color = "green";
+    } else {
+      message = "You Lost...";
+      icon = "😢";
+      color = "red";
+    }
+    const computerIcon = (computerChoice === "rock") ? "🪨"
+                        : (computerChoice === "paper") ? "📄"
+                        : "✂️";
+    result.innerHTML = `${message} ${icon}<br>Computer chose ${computerChoice} ${computerIcon}`;
+    result.style.color = color;
+  }
+  rock.addEventListener("click", function() {
+    playRound("rock");
+  });
+  paper.addEventListener("click", function() {
+    playRound("paper");
+  });
+  scissors.addEventListener("click", function() {
+    playRound("scissors");
+  });
+});
