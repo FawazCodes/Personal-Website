@@ -21,13 +21,6 @@ document.addEventListener("DOMContentLoaded", function() {
     { src: "background.gif", loaded: false },
     { src: "background2.gif", loaded: false }
   ];
-  const winSounds = [
-    { src: "win-sound1.mp3", loaded: false },
-    { src: "win-sound2.mp3", loaded: false },
-    { src: "win-sound3.mp3", loaded: false },
-    { src: "win-sound4.mp3", loaded: false }
-  ];
-
   function preloadImage(obj) {
     const image = new Image();
     image.onload = function() {
@@ -39,24 +32,7 @@ document.addEventListener("DOMContentLoaded", function() {
     image.src = obj.src;
     obj.img = image;
   }
-
-  function preloadAudio(obj) {
-    const audio = new Audio();
-    audio.preload = "auto";
-    audio.loop = true;
-    audio.oncanplaythrough = function() {
-      obj.loaded = true;
-    };
-    audio.onerror = function() {
-      console.error(`Error loading ${audio.src}`);
-    };
-    audio.src = obj.src;
-    obj.audio = audio;
-  }
-
   backgrounds.forEach(preloadImage);
-  winSounds.forEach(preloadAudio);
-
   function playRound(playerChoice) {
     const computerChoice = (function() {
       const choices = ["rock", "paper", "scissors"];
@@ -73,14 +49,10 @@ document.addEventListener("DOMContentLoaded", function() {
         index = Math.floor(Math.random() * backgrounds.length);
       } while (!backgrounds[index].loaded);
       const background = backgrounds[index];
-
-      let soundIndex;
-      do {
-        soundIndex = Math.floor(Math.random() * winSounds.length);
-      } while (!winSounds[soundIndex].loaded);
-      const audio = winSounds[soundIndex].audio;
+      const audio = new Audio();
+      audio.preload = "auto";
+      audio.src = `win-sound${Math.floor(4 * Math.random()) + 1}.mp3`;
       audio.play();
-
       document.body.style.backgroundImage = `url('${background.src}')`;
     }
     let message, icon, color;
@@ -103,7 +75,6 @@ document.addEventListener("DOMContentLoaded", function() {
     result.innerHTML = `${message} ${icon}<br>Computer chose ${computerChoice} ${computerIcon}`;
     result.style.color = color;
   }
-
   rock.addEventListener("click", function() {
     playRound("rock");
   });
