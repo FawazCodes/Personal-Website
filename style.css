@@ -113,3 +113,17 @@ h1 {
         padding: 20px;
     }
 }
+.instagram-button {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #fff;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.instagram-button:hover {
+    color: #e1306c;
+    transform: translateY(-2px);
+}
+
