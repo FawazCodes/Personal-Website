@@ -282,3 +282,13 @@ background-image: linear-gradient(to right, #ccf9ff, #7ce8ff, #55d0ff, #00acdf, 
   }
 }
 
+@media (max-width: 480px) {
+  #gameTitle {
+    font-size: 1.5rem; /* Adjust the font size for smaller screens */
+  }
+}
+
+/* Add margin to the gameFooter */
+#gameFooter {
+  margin-top: 20px; /* Adjust the margin as per your preference */
+}
