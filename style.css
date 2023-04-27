@@ -51,32 +51,24 @@ h1 {
     margin-bottom: 20px;
 }
 
-.button, .instagram-button {
+.button {
     font-size: 1rem;
     padding: 10px 20px;
     border-radius: 50px;
     border: none;
-    background: linear-gradient(135deg, #007aff, #005bd1);
+    background-color: #007aff;
     color: #fff;
     text-align: center;
     margin-bottom: 10px;
     cursor: pointer;
     transition: 0.3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
 }
 
-.button:hover, .instagram-button:hover {
-    background: linear-gradient(135deg, #005bd1, #007aff);
+.button:hover {
+    background-color: #005bd1;
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-}
-
-.button:focus, .instagram-button:focus {
-    outline: none;
 }
 
 .result {
@@ -107,7 +99,7 @@ h1 {
     h1 {
         font-size: 1.5rem;
     }
-    .button, .instagram-button {
+    .button {
         font-size: 0.8rem;
         padding: 8px 16px;
     }
@@ -119,9 +111,5 @@ h1 {
 @media (max-width: 480px) {
     .container {
         padding: 20px;
-    }
-    .button, .instagram-button {
-        font-size: 0.7rem;
-        padding: 7px 14px;
     }
 }
