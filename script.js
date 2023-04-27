@@ -59,66 +59,73 @@ document.addEventListener("DOMContentLoaded", function () {
         "bounce",
         "flip",
         "run",
-        "wave",
+        "dance-text"
       ];
 
-      let currentIndex = 0;
-      let previousIndex = -1;
+      const previousEffect = resultText.dataset.effect || "";
+      let nextEffect = previousEffect;
+      while (nextEffect === previousEffect) {
+        nextEffect = winEffects[Math.floor(Math.random() * winEffects.length)];
+      }
+      resultText.dataset.effect = nextEffect;
+      resultText.classList.remove(previousEffect);
+      resultText.classList.add(nextEffect);
 
-      const changeWinEffect = () => {
-        previousIndex = currentIndex;
-        while (currentIndex === previousIndex) {
-          currentIndex = Math.floor(Math.random() * winEffects.length);
-        }
+      const audio = new Audio();
+      audio.preload = "auto";
+      audio.src = `win-sound${Math.floor(Math.random() * 4) + 1}.mp3`;
+      audio.play();
 
-        resultText.classList.remove(winEffects[previousIndex]);
-        resultText.classList.add(winEffects[currentIndex]);
+      let i;
+      do {
+        i = Math.floor(Math.random() * images.length);
+      } while (!images[i].loaded);
 
-        setTimeout(changeWinEffect, 200);
-      };
+      const image = images[i];
+      document.body.style.backgroundImage = `url('${image.src}')`;
 
-      changeWinEffect();
+      setTimeout(function () {
+        playRound(playerChoice);
+      }, 1500);
     } else {
-      resultText.classList.remove("run", "dance");
-      resultText.classList.add("shake");
+      resultText.classList.remove(resultText.dataset.effect);
+      resultText.dataset.effect = "";
+
+      // Apply the shake animation if the consecutive tie/loss count is >= 1
+      if (consecutiveTieOrLossCount >= 1) {
+        resultText.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97)";
+      } else {
+        resultText.style.animation = "";
+      }
+
+      // Determine the result text content, emoji, and color
+      let resultTextContent, resultEmoji, resultColor;
+      if (result === "tie") {
+        resultTextContent = "It's a Tie";
+        resultEmoji = "😐";
+        resultColor = "white";
+      } else {
+        resultTextContent = "You Lost...";
+resultEmoji = "😢";
+resultColor = "red";
+        // Update the consecutive tie/loss count
+    consecutiveTieOrLossCount++;
+
+    setTimeout(function () {
+      playRound(playerChoice);
+    }, 1500);
+  }
+}
+
+// Update the result text with the appropriate content, emoji, and color
+resultText.innerHTML = `${resultTextContent} ${resultEmoji}<br>Computer chose ${computerChoice} ${
+  computerChoice === "rock" ? "🪨" : computerChoice === "paper" ? "📄" : "✂️"
+}`;
+resultText.style.color = resultColor;
+
+// Update the previous result
+previousResult = result;
     }
-
-    // Determine the result text content, emoji, and color
-    let resultTextContent, resultEmoji, resultColor;
-    if (result === "tie") {
-      resultTextContent = "It's a Tie";
-      resultEmoji = "😐";
-      resultColor = "white";
-    } else if (result === "win") {
-      resultTextContent = "You Won!!!";
-      resultEmoji = "🥳";
-      resultColor = "green";
-    } else {
-      resultTextContent = "You Lost...";
-      resultEmoji = "😢";
-      resultColor = "red";
-    }
-
-    // Update the result text with the appropriate content, emoji, and color
-    resultText.innerHTML = `${resultTextContent} ${resultEmoji}<br>Computer chose ${computerChoice} ${
-      computerChoice === "rock" ? "🪨" : computerChoice === "paper" ? "📄" : "✂️"
-    }`;
-    resultText.style.color = resultColor;
-
-   // Update the consecutive tie/loss count
-if (result === "tie" || result === "lose") {
-  consecutiveTieOrLossCount++;
-} else {
-  consecutiveTieOrLossCount = 0;
-}
-
-// Apply the shake animation if the consecutive tie/loss count is >= 1
-if (consecutiveTieOrLossCount >= 1) {
-  resultText.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97)";
-} else {
-  resultText.style.animation = "";
-}
-}
 
 // Load the images
 images.forEach(function (image) {
@@ -135,12 +142,18 @@ image.img = img;
 
 // Add event listeners for the player's choices
 rockButton.addEventListener("click", function () {
+if (resultText.style.animation === "") {
 playRound("rock");
+}
 });
 paperButton.addEventListener("click", function () {
+if (resultText.style.animation === "") {
 playRound("paper");
+}
 });
 scissorsButton.addEventListener("click", function () {
+if (resultText.style.animation === "") {
 playRound("scissors");
+}
 });
 });
