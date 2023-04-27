@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
       resultTextContent = "It's a Tie";
       resultEmoji = "😐";
       resultColor = "white";
+      resultText.classList.add("shake");
     } else if (result === "win") {
       resultTextContent = "You Won!!!";
       resultEmoji = "🥳";
@@ -82,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
       resultTextContent = "You Lost...";
       resultEmoji = "😢";
       resultColor = "red";
+      resultText.classList.add("shake");
     }
 
     // Update the result text with the appropriate content, emoji, and color
