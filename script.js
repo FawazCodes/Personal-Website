@@ -1,1 +1,117 @@
-document.addEventListener("DOMContentLoaded",(function(){document.getElementById("curiousCat").onclick=function(){window.location.href="https://curiouscat.live/Idkwallah"};const o=document.getElementById("rock"),n=document.getElementById("paper"),e=document.getElementById("scissors"),r=document.getElementById("result"),t=new Image;t.onload=function(){document.body.style.backgroundImage=`url('${t.src}')`},t.onerror=function(){console.error(`Error loading ${t.src}`)},t.src="dvd.gif";const c=[{src:"background.gif",loaded:!1},{src:"background2.gif",loaded:!1}];function s(o){const n=function(){const o=["rock","paper","scissors"];return o[Math.floor(Math.random()*o.length)]}(),e=(t=o)===(s=n)?"tie":"rock"===t&&"scissors"===s||"paper"===t&&"rock"===s||"scissors"===t&&"paper"===s?"win":"lose";var t,s;if("win"===e){let o;do{o=Math.floor(Math.random()*c.length)}while(!c[o].loaded);const n=c[o],e=new Audio;e.preload="auto",e.src=`win-sound${Math.floor(4*Math.random())+1}.mp3`,e.play(),document.body.style.backgroundImage=`url('${n.src}')`}let d,i,a;"tie"===e?(d="It's a Tie",i="😐",a="white"):"win"===e?(d="You Won!!!",i="🥳",a="green"):(d="You Lost...",i="😢",a="red"),r.innerHTML=`${d} ${i}<br>Computer chose ${n} ${"rock"===n?"🪨":"paper"===n?"📄":"✂️"}`,r.style.color=a}c.forEach((function(o){const n=new Image;n.onload=function(){o.loaded=!0},n.onerror=function(){console.error(`Error loading ${n.src}`)},n.src=o.src,o.img=n})),o.addEventListener("click",(function(){s("rock")})),n.addEventListener("click",(function(){s("paper")})),e.addEventListener("click",(function(){s("scissors")}))}));
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("curiousCat").onclick = function() {
+    window.location.href = "https://curiouscat.live/Idkwallah";
+  };
+
+  const rock = document.getElementById("rock");
+  const paper = document.getElementById("paper");
+  const scissors = document.getElementById("scissors");
+  const result = document.getElementById("result");
+
+  const buttonColors = [
+    "linear-gradient(to bottom, #FFC300, #FF5733)",
+    "linear-gradient(to bottom, #6DD5FA, #2980B9)",
+    "linear-gradient(to bottom, #FF3CAC, #784BA0)",
+  ];
+
+  const randomColor1 = buttonColors[Math.floor(Math.random() * buttonColors.length)];
+  const randomColor2 = buttonColors[Math.floor(Math.random() * buttonColors.length)];
+
+  const buttons = document.querySelectorAll('.button');
+  buttons.forEach(button => {
+    button.style.background = `linear-gradient(to bottom, ${randomColor1}, ${randomColor2})`;
+    button.style.fontSize = '1.2rem';
+  });
+
+  const backgroundImages = [
+    { src: "background.gif", loaded: false },
+    { src: "background2.gif", loaded: false }
+  ];
+
+  backgroundImages.forEach((bgImage) => {
+    const img = new Image();
+    img.onload = function() {
+      bgImage.loaded = true;
+    };
+    img.onerror = function() {
+      console.error(`Error loading ${img.src}`);
+    };
+    img.src = bgImage.src;
+    bgImage.img = img;
+  });
+
+  const sounds = [
+    "win-sound1.mp3",
+    "win-sound2.mp3",
+    "win-sound3.mp3",
+    "win-sound4.mp3",
+  ];
+
+  function playSound(src) {
+    const audio = new Audio();
+    audio.preload = "auto";
+    audio.src = src;
+    audio.play();
+  }
+
+  function playWinSound() {
+    let bgImage;
+    do {
+      bgImage = backgroundImages[Math.floor(Math.random() * backgroundImages.length)];
+    } while (!bgImage.loaded);
+
+    const sound = sounds[Math.floor(Math.random() * sounds.length)];
+    playSound(sound);
+
+    document.body.style.backgroundImage = `url('${bgImage.src}')`;
+  }
+
+  function getResult(playerChoice) {
+    const computerChoice = (function() {
+      const choices = ["rock", "paper", "scissors"];
+      return choices[Math.floor(Math.random() * choices.length)];
+    })();
+    const outcome = (() => {
+      if (playerChoice === computerChoice) {
+        return "tie";
+      } else if (
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "paper" && computerChoice === "rock") ||
+        (playerChoice === "scissors" && computerChoice === "paper")
+      ) {
+        return "win";
+      } else {
+        return "lose";
+      }
+    })();
+    if (outcome === "win") {
+      playWinSound();
+    }
+    let resultText, resultEmoji, resultColor;
+    if (outcome === "tie") {
+      resultText = "It's a Tie";
+      resultEmoji = "😐";
+      resultColor = "white";
+    } else if (outcome === "win") {
+      resultText = "You Won!!!";
+      resultEmoji = "🥳";
+      resultColor = "green";
+    } else {
+      resultText = "You Lost...";
+      resultEmoji = "😢";
+      resultColor = "red";
+    }
+    result.innerHTML = `${resultText} ${resultEmoji}<br>Computer chose ${computerChoice} ${computerChoice === "rock" ? "🪨" : computerChoice === "paper" ? "📄" : "✂️"}`;
+    result.style.color = resultColor;
+  }
+
+  rock.addEventListener("click", function() {
+    getResult("rock");
+  });
+  paper.addEventListener("click", function() {
+    getResult("paper");
+  });
+  scissors.addEventListener("click", function() {
+    getResult("scissors");
+  });
+});
