@@ -35,23 +35,62 @@ body {
 }
 
 .container {
-    font-family: 'Vazir Matn', 'Overpass', sans-serif;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50px;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  font-family: 'Vazir Matn', 'Overpass', sans-serif;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  height: 70vh;
+  width: 80vw;
+  position: relative;
+  overflow: hidden;
+  margin-top: 20px;
 }
+
+.container:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #fff;
+  transform: scale(1.2);
+  z-index: -1;
+}
+
+.container:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #000;
+  transform: scale(1.22);
+  z-index: -2;
+}
+
+.container > svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
+}
+
+.container > svg path {
+  fill: #F5F7FA;
 
 }
 
