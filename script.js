@@ -109,15 +109,40 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     resultText.style.animation = "";
   }
+if (result === "win") {
+  let i;
+  do {
+    i = Math.floor(Math.random() * images.length);
+  } while (!images[i].loaded);
 
-  if (result === "win") {
-    resultText.style.animation = "pop 1s ease-in-out forwards";
-    setTimeout(function () {
-      resultText.classList.remove("pop");
-    }, 1000);
-  } else {
-    resultText.classList.remove("pop");
-  }
+  const image = images[i];
+  const audio = new Audio();
+  audio.preload = "auto";
+  audio.src = `win-sound${Math.floor(Math.random() * 4) + 1}.mp3`;
+  audio.play();
+
+  document.body.style.backgroundImage = `url('${image.src}')`;
+
+  // add hilarious effect on win
+  const winEffects = [
+    "stretch",
+    "dance",
+    "sling",
+    "rotate"
+  ];
+  const randomEffect = winEffects[Math.floor(Math.random() * winEffects.length)];
+  resultText.classList.add(randomEffect);
+
+  // remove the win effect class before the next round begins
+  rockButton.disabled = true;
+  paperButton.disabled = true;
+  scissorsButton.disabled = true;
+  setTimeout(function () {
+    resultText.classList.remove(randomEffect);
+    rockButton.disabled = false;
+    paperButton.disabled = false;
+    scissorsButton.disabled = false;
+  }, 2000);
 }
 
   images.forEach(function (image) {
