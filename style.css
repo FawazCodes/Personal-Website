@@ -19,79 +19,35 @@ html {
 }
 
 body {
-  font-family: 'Overpass', sans-serif;
-  background-image: url("dvd.gif");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh; /* change to min-height */
-  width: 100vw;
-  overflow: hidden;
-  color: #fff;
+    font-family: 'Overpass', sans-serif;
+    background-image: url("dvd.gif");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    color: #fff;
 }
 
 .container {
-  font-family: 'Vazir Matn', 'Overpass', sans-serif;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 50px;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  max-width: 800px;
-  margin: 0 auto;
-  height: 70vh;
-  width: 80vw;
-  position: relative;
-  overflow: hidden;
-  margin-top: 20px;
-}
-
-.container:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: #fff;
-  transform: scale(1.2);
-  z-index: -1;
-}
-
-.container:after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  background: #000;
-  transform: scale(1.22);
-  z-index: -2;
-}
-
-.container > svg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -3;
-}
-
-.container > svg path {
-  fill: #F5F7FA;
-
+    font-family: 'Vazir Matn', 'Overpass', sans-serif;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+    height: calc(100vh - 80px); /* subtracting the height of the header */
 }
 
 h1 {
@@ -136,163 +92,154 @@ h1 {
 }
 
 #result {
-  font-family: 'Ubuntu', sans-serif;
-  text-align: center;
-  font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+font-family: 'Ubuntu', sans-serif;
+text-align: center;
+font-weight: bold;
+margin-top: 20px;
+margin-bottom: 20px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 
 .stretch {
-  animation: stretch 0.5s ease-in-out;
+animation: stretch 0.5s ease-in-out;
 }
 
 .dance {
-  animation: dance 0.5s ease-in-out;
+animation: dance 0.5s ease-in-out;
 }
 
 .sling {
-  animation: sling 0.5s ease-in-out;
+animation: sling 0.5s ease-in-out;
 }
 
 .rotate {
-  animation: rotate 0.5s ease-in-out;
+animation: rotate 0.5s ease-in-out;
 }
 
 @keyframes win {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.5);
-  }
-  100% {
-    transform: scale(1);
-  }
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.5);
+}
+100% {
+transform: scale(1);
+}
 }
 
 @keyframes lose {
-  0% {
-    transform: translateY(-5px);
-  }
-  50% {
-    transform: translateY(5px);
-  }
-  100% {
-    transform: translateY(-5px);
-  }
+0% {
+transform: translateY(-5px);
+}
+50% {
+transform: translateY(5px);
+}
+100% {
+transform: translateY(-5px);
+}
 }
 
 @keyframes shake {
-  0% {
-    transform: translateX(0);
-  }
-  20% {
-    transform: translateX(-10px);
-  }
-  40% {
-    transform: translateX(10px);
-  }
-  60% {
-    transform: translateX(-10px);
-  }
-  80% {
-    transform: translateX(10px);
-  }
-  100% {
-    transform: translateX(0);
-  }
+0% {
+transform: translateX(0);
+}
+20% {
+transform: translateX(-10px);
+}
+40% {
+transform: translateX(10px);
+}
+60% {
+transform: translateX(-10px);
+}
+80% {
+transform: translateX(10px);
+}
+100% {
+transform: translateX(0);
+}
 }
 
 @keyframes pop {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(2);
-  }
-  100% {
-    transform: scale(1);
-  }
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(2);
+}
+100% {
+transform: scale(1);
+}
 }
 
 #result > span {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+display: flex;
+flex-direction: row;
+align-items: center;
 }
 
 #result > span > .computer-choice {
-  font-size: 1.5rem;
-  margin-left: 10px;
+font-size: 1.5rem;
+margin-left: 10px;
 }
 
 #result > span > .player-choice {
-  font-size: 1.5rem;
-  margin-right: 10px;
+font-size: 1.5rem;
+margin-right: 10px;
 }
 
 #result > span > .result-emoji {
-  font-size: 1.5rem;
-  margin: 0 10px;
+font-size: 1.5rem;
+margin: 0 10px;
 }
 
 #result.win {
-  color: #4caf50;
-  animation: pop 0.3s ease;
+color: #4caf50;
+animation: pop 0.3s ease;
 }
 
 #result.lose {
-  color: #f44336;
-  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+color: #f44336;
+animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 }
 
 @keyframes shake {
-  10%, 90% {
-    transform: translate3d(-1px, 0, 0);
-  }
+10%, 90% {
+transform: translate3d(-1px, 0, 0);
+}
 
-  20%, 80% {
-    transform: translate3d(2px, 0, 0);
-  }
+20%, 80% {
+transform: translate3d(2px, 0, 0);
+}
 
-  30%, 50%, 70% {
-    transform: translate3d(-4px, 0, 0);
-  }
+30%, 50%, 70% {
+transform: translate3d(-4px, 0, 0);
+}
 
-  40%, 60% {
-    transform: translate3d(4px, 0, 0);
-  }
+40%, 60% {
+transform: translate3d(4px, 0, 0);
+}
 }
 
 @keyframes pop {
-  0% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
-  }
-  100% {
-    transform: scale(1);
-  }
+0% {
+transform: scale(1);
+}
+50% {
+transform: scale(1.1);
+}
+100% {
+transform: scale(1);
+}
 }
 
 @media (max-width: 768px) {
-  #result > span > .computer-choice,
-  #result > span > .player-choice,
-  #result > span > .result-emoji {
-    font-size: 1.2rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #result > span > .computer-choice,
-  #result > span > .player-choice,
-  #result > span > .result-emoji {
-    font-size: 1rem;
-  }
+#result > span > .computer-choice,
+#result > span > .player-choice,
+#result > span > .result-emoji {
+font-size: 1.2rem;
 }
