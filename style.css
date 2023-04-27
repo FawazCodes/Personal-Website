@@ -56,8 +56,7 @@ h1 {
     padding: 10px 20px;
     border-radius: 50px;
     border: none;
-    background-color: #007aff;
-    background-image: linear-gradient(to bottom, #007aff, #005bd1);
+    background: linear-gradient(to bottom, #007aff, #005bd1);
     color: #fff;
     text-align: center;
     margin-bottom: 10px;
