@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const rockButton = document.getElementById("rock");
   const paperButton = document.getElementById("paper");
   const scissorsButton = document.getElementById("scissors");
+  const curiousCatButton = document.getElementById("curiousCat");
   const resultText = document.getElementById("result");
 
   // Apply gradient to the buttons when the page loads
@@ -20,8 +21,9 @@ document.addEventListener("DOMContentLoaded", function () {
   rockButton.style.backgroundImage = gradient;
   paperButton.style.backgroundImage = gradient;
   scissorsButton.style.backgroundImage = gradient;
+  curiousCatButton.style.backgroundImage = gradient;
 
-  document.getElementById("curiousCat").onclick = function () {
+  curiousCatButton.onclick = function () {
     window.location.href = "https://curiouscat.live/Idkwallah";
   };
 
@@ -93,7 +95,37 @@ document.addEventListener("DOMContentLoaded", function () {
       computerChoice === "rock" ? "🪨" : computerChoice === "paper" ? "📄" : "✂️"
     }`;
     resultText.style.color = resultColor;
-    resultText.classList.add("win");
+
+       if (result === "tie" || result === "lose") {
+      if (previousResult === "tie" || previousResult === "lose") {
+        consecutiveTieOrLossCount++;
+      } else {
+        consecutiveTieOrLossCount = 1;
+      }
+    } else {
+      consecutiveTieOrLossCount = 0;
+    }
+
+    previousResult = result;
+
+    if (consecutiveTieOrLossCount >= 2) {
+      resultText.style.fontSize = "1.5em"; // Adjust the font size here
+      resultText.style.opacity = 0;
+      setTimeout(() => {
+        resultText.style.transition = "opacity 0.5s";
+        resultText.style.opacity = 1;
+      }, 50);
+    } else {
+      resultText.style.fontSize = ""; // Reset the font size
+      resultText.style.transition = "";
+      resultText.style.opacity = "";
+    }
+
+    if (result === "win") {
+      resultText.style.animation = "dance 0.3s infinite";
+    } else {
+      resultText.style.animation = ""; // Remove dancing effect
+    }
 
     resultText.style.display = "flex";
     resultText.style.flexDirection = "column";
@@ -101,43 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
     resultText.style.alignItems = "center";
     resultText.style.textAlign = "center";
 
-    if (result === "tie" || result === "lose") {
-  if (previousResult === "tie" || previousResult === "lose") {
-    consecutiveTieOrLossCount++;
-  } else {
-    consecutiveTieOrLossCount = 1;
-  }
-} else {
-  consecutiveTieOrLossCount = 0;
-}
-previousResult = result;
-
-if (consecutiveTieOrLossCount >= 2) {
-  resultText.style.fontSize = "1.5em"; // Adjust the font size here
-  resultText.style.opacity = 0;
-  setTimeout(() => {
-    resultText.style.transition = "opacity 0.5s";
-    resultText.style.opacity = 1;
-  }, 50);
-} else {
-  resultText.style.fontSize = ""; // Reset the font size
-  resultText.style.transition = "";
-  resultText.style.opacity = "";
-}
-
-if (result === "win") {
-  resultText.style.animation = "dance 0.3s infinite";
-} else {
-  resultText.style.animation = ""; // Remove dancing effect
-}
-
-// Apply gradient to the buttons
-const color1 = getRandomColor();
-const color2 = getRandomColor();
-const gradient = `linear-gradient(45deg, ${color1}, ${color2})`;
-rockButton.style.backgroundImage = gradient;
-paperButton.style.backgroundImage = gradient;
-scissorsButton.style.backgroundImage = gradient;
   }
 
   images.forEach(function (image) {
