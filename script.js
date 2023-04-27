@@ -1,31 +1,12 @@
-function getRandomColor() {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("curiousCat").onclick = function () {
+    window.location.href = "https://curiouscat.live/Idkwallah";
+  };
+
   const rockButton = document.getElementById("rock");
   const paperButton = document.getElementById("paper");
   const scissorsButton = document.getElementById("scissors");
-  const curiousCatButton = document.getElementById("curiousCat");
   const resultText = document.getElementById("result");
-
-  // Apply gradient to the buttons when the page loads
-  const color1 = getRandomColor();
-  const color2 = getRandomColor();
-  const gradient = `linear-gradient(45deg, ${color1}, ${color2})`;
-  rockButton.style.backgroundImage = gradient;
-  paperButton.style.backgroundImage = gradient;
-  scissorsButton.style.backgroundImage = gradient;
-  curiousCatButton.style.backgroundImage = gradient;
-
-  curiousCatButton.onclick = function () {
-    window.location.href = "https://curiouscat.live/Idkwallah";
-  };
 
   const images = [
     {
@@ -40,7 +21,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let previousResult = null;
   let consecutiveTieOrLossCount = 0;
-
   function playRound(playerChoice) {
     const computerChoice = (function () {
       const choices = ["rock", "paper", "scissors"];
@@ -96,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }`;
     resultText.style.color = resultColor;
 
-       if (result === "tie" || result === "lose") {
+    if (result === "tie" || result === "lose") {
       if (previousResult === "tie" || previousResult === "lose") {
         consecutiveTieOrLossCount++;
       } else {
@@ -109,30 +89,16 @@ document.addEventListener("DOMContentLoaded", function () {
     previousResult = result;
 
     if (consecutiveTieOrLossCount >= 2) {
-      resultText.style.fontSize = "1.5em"; // Adjust the font size here
-      resultText.style.opacity = 0;
-      setTimeout(() => {
-        resultText.style.transition = "opacity 0.5s";
-        resultText.style.opacity = 1;
-      }, 50);
+      resultText.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
     } else {
-      resultText.style.fontSize = ""; // Reset the font size
-      resultText.style.transition = "";
-      resultText.style.opacity = "";
+      resultText.style.animation = "";
     }
 
-    if (result === "win") {
+        if (result === "win") {
       resultText.style.animation = "dance 0.3s infinite";
     } else {
       resultText.style.animation = ""; // Remove dancing effect
     }
-
-    resultText.style.display = "flex";
-    resultText.style.flexDirection = "column";
-    resultText.style.justifyContent = "center";
-    resultText.style.alignItems = "center";
-    resultText.style.textAlign = "center";
-
   }
 
   images.forEach(function (image) {
