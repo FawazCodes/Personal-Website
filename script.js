@@ -10,6 +10,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const scissorsButton = document.getElementById("scissors");
   const resultText = document.getElementById("result");
 
+  // Add the new effects to the winEffects array
+  const winEffects = [
+    "stretch",
+    "dance",
+    "sling",
+    "rotate",
+    "bounce",
+    "flip"
+  ];
+
   // Define the images to use
   const images = [
     {
@@ -22,69 +32,70 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
-  function generateComputerChoice() {
-    const choices = ["rock", "paper", "scissors"];
-    return choices[Math.floor(Math.random() * choices.length)];
-  }
-
-  function determineResult(playerChoice, computerChoice) {
-    if (playerChoice === computerChoice) {
-      return "tie";
-    } else if (
-      (playerChoice === "rock" && computerChoice === "scissors") ||
-      (playerChoice === "paper" && computerChoice === "rock") ||
-      (playerChoice === "scissors" && computerChoice === "paper")
-    ) {
-      return "win";
-    } else {
-      return "lose";
-    }
-  }
+  // Define variables to keep track of the previous round and consecutive tie/loss counts
+  let previousResult = null;
+  let consecutiveTieOrLossCount = 0;
 
   // Define the playRound function
   function playRound(playerChoice) {
     // Generate the computer's choice
-    const computerChoice = generateComputerChoice();
+    const computerChoice = (function () {
+      const choices = ["rock", "paper", "scissors"];
+      return choices[Math.floor(Math.random() * choices.length)];
+    })();
 
     // Determine the result of the round
-    const result = determineResult(playerChoice, computerChoice);
+    const result = (function () {
+      if (playerChoice === computerChoice) {
+        return "tie";
+      } else if (
+        (playerChoice === "rock" && computerChoice === "scissors") ||
+        (playerChoice === "paper" && computerChoice === "rock") ||
+        (playerChoice === "scissors" && computerChoice === "paper")
+      ) {
+        return "win";
+      } else {
+        return "lose";
+      }
+    })();
 
     // Handle the win result
     if (result === "win") {
-      const winEffects = [
-        "stretch",
-        "dance",
-        "sling",
-        "rotate",
-        "bounce",
-        "flip"
-      ];
+      let i;
+      do {
+        i = Math.floor(Math.random() * images.length);
+      } while (!images[i].loaded);
 
-      let i = 0;
-
-      function applyEffect() {
-        resultText.classList.add(winEffects[i]);
-        setTimeout(() => {
-          resultText.classList.remove(winEffects[i]);
-          i = (i + 1) % winEffects.length;
-          applyEffect();
-        }, 2000);
-      }
-
-      applyEffect();
-
+      const image = images[i];
       const audio = new Audio();
       audio.preload = "auto";
       audio.src = `win-sound${Math.floor(Math.random() * 4) + 1}.mp3`;
       audio.play();
 
-      let j = 0;
-      function changeBackground() {
-        document.body.style.backgroundImage = `url('${images[j].src}')`;
-        j = (j + 1) % images.length;
-        setTimeout(changeBackground, 2000);
+      document.body.style.backgroundImage = `url('${image.src}')`;
+
+      // Apply the random effect
+      function getRandomEffect() {
+        return winEffects[Math.floor(Math.random() * winEffects.length)];
       }
-      changeBackground();
+
+      function applyRandomEffect() {
+        const randomEffect = getRandomEffect();
+        resultText.classList.add(randomEffect);
+
+        setTimeout(() => {
+          resultText.classList.remove(randomEffect);
+          applyRandomEffect();
+        }, 3000);
+      }
+
+      applyRandomEffect();
+    } else {
+      resultText.classList.add("shake");
+
+      setTimeout(() => {
+        resultText.classList.remove("shake");
+      }, 3000);
     }
 
     // Determine the result text content, emoji, and color
@@ -93,7 +104,6 @@ document.addEventListener("DOMContentLoaded", function () {
       resultTextContent = "It's a Tie";
       resultEmoji = "😐";
       resultColor = "white";
-      resultText.classList.add("shake");
     } else if (result === "win") {
       resultTextContent = "You Won!!!";
       resultEmoji = "🥳";
@@ -101,12 +111,10 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
       resultTextContent = "You Lost...";
       resultEmoji = "😢";
-      resultColor = "red";
-      resultText.classList.add("shake");
-    }
-
+resultColor = "red";
+}
     // Update the result text with the appropriate content, emoji, and color
-    resultText.innerHTML = `${resultTextContent} ${resultEmoji}<br>Computer chose ${computerChoice} ${
+resultText.innerHTML = `${resultTextContent} ${resultEmoji}<br>Computer chose ${computerChoice} ${
   computerChoice === "rock" ? "🪨" : computerChoice === "paper" ? "📄" : "✂️"
 }`;
 resultText.style.color = resultColor;
@@ -118,14 +126,26 @@ if (result === "tie" || result === "lose") {
   consecutiveTieOrLossCount = 0;
 }
 
-// Remove the shake class before the next round begins
-setTimeout(() => {
-  resultText.classList.remove("shake");
-}, 2000);
-
 // Update the previous result
 previousResult = result;
-    }
+
+// Apply the shake animation if the consecutive tie/loss count is >= 1
+if (consecutiveTieOrLossCount >= 1) {
+  resultText.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97)";
+} else {
+  resultText.style.animation = "";
+}
+
+// Apply the pop animation if the player wins
+if (result === "win") {
+  resultText.style.animation = "pop 1s ease-in-out forwards";
+  setTimeout(function () {
+    resultText.classList.remove("pop");
+  }, 1000);
+} else {
+  resultText.classList.remove("pop");
+}
+}
 
 // Load the images
 images.forEach(function (image) {
