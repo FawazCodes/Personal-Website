@@ -22,6 +22,25 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   ];
 
+  function generateComputerChoice() {
+    const choices = ["rock", "paper", "scissors"];
+    return choices[Math.floor(Math.random() * choices.length)];
+  }
+
+  function determineResult(playerChoice, computerChoice) {
+    if (playerChoice === computerChoice) {
+      return "tie";
+    } else if (
+      (playerChoice === "rock" && computerChoice === "scissors") ||
+      (playerChoice === "paper" && computerChoice === "rock") ||
+      (playerChoice === "scissors" && computerChoice === "paper")
+    ) {
+      return "win";
+    } else {
+      return "lose";
+    }
+  }
+
   // Define the playRound function
   function playRound(playerChoice) {
     // Generate the computer's choice
@@ -88,19 +107,47 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Update the result text with the appropriate content, emoji, and color
     resultText.innerHTML = `${resultTextContent} ${resultEmoji}<br>Computer chose ${computerChoice} ${
-      computerChoice === "rock" ? "🪨" : computerChoice === "paper" ? "📄" : "✂️"
-    }`;
-    resultText.style.color = resultColor;
-  }
+  computerChoice === "rock" ? "🪨" : computerChoice === "paper" ? "📄" : "✂️"
+}`;
+resultText.style.color = resultColor;
 
-  // Add event listeners for the player's choices
-  rockButton.addEventListener("click", function () {
-    playRound("rock");
-  });
-  paperButton.addEventListener("click", function () {
-    playRound("paper");
-  });
-  scissorsButton.addEventListener("click", function () {
-    playRound("scissors");
-  });
+// Update the consecutive tie/loss count
+if (result === "tie" || result === "lose") {
+  consecutiveTieOrLossCount++;
+} else {
+  consecutiveTieOrLossCount = 0;
+}
+
+// Remove the shake class before the next round begins
+setTimeout(() => {
+  resultText.classList.remove("shake");
+}, 2000);
+
+// Update the previous result
+previousResult = result;
+    }
+
+// Load the images
+images.forEach(function (image) {
+const img = new Image();
+img.onload = function () {
+image.loaded = true;
+};
+img.onerror = function () {
+console.error(Error loading ${img.src});
+};
+img.src = image.src;
+image.img = img;
+});
+
+// Add event listeners for the player's choices
+rockButton.addEventListener("click", function () {
+playRound("rock");
+});
+paperButton.addEventListener("click", function () {
+playRound("paper");
+});
+scissorsButton.addEventListener("click", function () {
+playRound("scissors");
+});
 });
