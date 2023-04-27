@@ -43,31 +43,31 @@ document.addEventListener("DOMContentLoaded", function () {
   })();
 
   if (result === "win") {
-    let i;
-    do {
-      i = Math.floor(Math.random() * images.length);
-    } while (!images[i].loaded);
+  let i;
+  do {
+    i = Math.floor(Math.random() * images.length);
+  } while (!images[i].loaded);
 
-    const image = images[i];
-    const audio = new Audio();
-    audio.preload = "auto";
-    audio.src = `win-sound${Math.floor(Math.random() * 4) + 1}.mp3`;
-    audio.play();
+  const image = images[i];
+  const audio = new Audio();
+  audio.preload = "auto";
+  audio.src = `win-sound${Math.floor(Math.random() * 4) + 1}.mp3`;
+  audio.play();
 
-    document.body.style.backgroundImage = `url('${image.src}')`;
+  document.body.style.backgroundImage = `url('${image.src}')`;
 
-    // add hilarious effect on win
-    const winEffects = [
-      "stretch",
-      "dance",
-      "sling",
-      "rotate"
-    ];
-    const randomEffect = winEffects[Math.floor(Math.random() * winEffects.length)];
-    resultText.classList.add(randomEffect);
-    setTimeout(function () {
-      resultText.classList.remove(randomEffect);
-    }, 1000);
+  // add hilarious effect on win
+  const winEffects = [
+    "stretch",
+    "dance",
+    "sling",
+    "rotate"
+  ];
+  const randomEffect = winEffects[Math.floor(Math.random() * winEffects.length)];
+  resultText.classList.add(randomEffect);
+  setTimeout(function () {
+    resultText.classList.remove(randomEffect);
+  }, 1000);
   }
 
   let resultTextContent, resultEmoji, resultColor;
