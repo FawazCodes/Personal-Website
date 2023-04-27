@@ -49,15 +49,13 @@ body {
   margin: auto;
   height: 400px;
   width: 400px;
-
-}
-
 }
 
 h1 {
   font-size: 2rem;
   margin-bottom: 20px;
   animation: fadeInDown 1s;
+  margin-top: 20px; /* Adjusted margin top */
 }
 
 @keyframes fadeInDown {
@@ -72,8 +70,8 @@ h1 {
 }
 
 .button {
-  font-size: 1.05rem; /* 25% smaller font size */
-  padding: 7.5px 15px; /* 25% smaller padding */
+  font-size: 1.25rem; /* Increased font size */
+  padding: 10px 20px; /* Increased padding */
   border-radius: 50px;
   border: none;
   color: #fff;
@@ -85,20 +83,19 @@ h1 {
   font-family: 'Vazir Matn', 'Overpass', sans-serif;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   animation: fadeIn 1s;
-  background-image: linear-gradient(to right, #7ce8ff, #55d0ff, #00acdf, #0080bf); /* Updated gradient */
+  background-image: linear-gradient(to right, #000000, #090909, #131313, #1A1A1A, #202020); /* Updated gradient */
 }
 
 .button .emoji {
   font-size: 2rem;
   margin-right: 10px;
-
 }
 
 .button:hover {
   background-image: linear-gradient(to right, ${chroma.scale(['#005bd1', '#007aff']).mode('lch').colors(2)});
   transform: translateY(-2px);
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  text-shadow: 1px 1px 2px rgba(0, 0,...0.5);
 }
 
 #result {
@@ -221,20 +218,18 @@ animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
 10%, 90% {
 transform: translate3d(-1px, 0, 0);
 }
-
 20%, 80% {
-  transform: translate3d(2px, 0, 0);
+transform: translate3d(2px, 0, 0);
 }
-
 30%, 50%, 70% {
-  transform: translate3d(-4px, 0, 0);
+transform: translate3d(-4px, 0, 0);
+}
+40%, 60% {
+transform: translate3d(4px, 0, 0);
+}
 }
 
-40%, 60% {
-  transform: translate3d(4px, 0, 0);
-}
-}
-  @keyframes pop {
+@keyframes pop {
 0% {
 transform: scale(1);
 }
@@ -245,18 +240,14 @@ transform: scale(1.1);
 transform: scale(1);
 }
 }
+
 @media (max-width: 480px) {
 h1 {
-font-size: 1.5rem; /* Smaller font size for mobile */
+font-size: 1.5rem;
 }
 }
 
 #gameFooter {
 font-size: 0.8rem;
-margin-top: 20px; /* Increase the margin to make the footer a bit far from the curiousCat button */
-}
-
-#curiousCat {
-margin-bottom: 0; /* Remove the bottom margin to make the button closer to the footer */
-}
+margin-top: 20px;
 }
