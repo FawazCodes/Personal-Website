@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+   document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("curiousCat").onclick = function () {
     window.location.href = "https://curiouscat.live/Idkwallah";
   };
@@ -18,6 +18,9 @@ document.addEventListener("DOMContentLoaded", function () {
       loaded: false,
     },
   ];
+
+  let previousResult = null;
+  let consecutiveTieOrLossCount = 0;
 
   function playRound(playerChoice) {
     const computerChoice = (function () {
@@ -74,13 +77,32 @@ document.addEventListener("DOMContentLoaded", function () {
     }`;
     resultText.style.color = resultColor;
     resultText.classList.add("win");
+
+    if (result === "tie" || result === "lose") {
+      if (previousResult === "tie" || previousResult === "lose") {
+        consecutiveTieOrLossCount++;
+      } else {
+        consecutiveTieOrLossCount = 1;
+      }
+    } else {
+      consecutiveTieOrLossCount = 0;
+    }
+    previousResult = result;
+
+    if (consecutiveTieOrLossCount >= 2) {
+      resultText.style.fontSize = "2rem";
+      resultText.style.transition = "font-size 0.5s";
+      setTimeout(() => {
+        resultText.style.fontSize = "1rem";
+      }, 1000);
+    }
   }
 
   images.forEach(function (image) {
     const img = new Image();
     img.onload = function () {
-      image.loaded = true;
-    };
+      image.loaded = true
+};
     img.onerror = function () {
       console.error(`Error loading ${img.src}`);
     };
