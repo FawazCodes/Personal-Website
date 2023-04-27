@@ -78,21 +78,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Apply a random effect to the result text
       const randomEffect = winEffects[Math.floor(Math.random() * winEffects.length)];
-      resultText.classList.add(randomEffect);
+      resultText.classList.add(randomEffect, "fast", "funny");
 
       // Remove the win effect class before the next round begins
       rockButton.disabled = true;
       paperButton.disabled = true;
       scissorsButton.disabled = true;
       setTimeout(function () {
-        resultText.classList.remove(randomEffect);
+        resultText.classList.remove(randomEffect, "fast", "funny");
         rockButton.disabled = false;
         paperButton.disabled = false;
         scissorsButton.disabled = false;
       }, 5000); // Increase the timeout duration to accommodate the new effects
+    } else if (result === "lose" || result === "tie") {
+      // Apply the shake animation if the player loses or ties
+      resultText.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97)";
     }
 
-    // Determine the result text content, emoji, and color
+        // Determine the result text content, emoji, and color
     let resultTextContent, resultEmoji, resultColor;
     if (result === "tie") {
       resultTextContent = "It's a Tie";
@@ -101,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (result === "win") {
       resultTextContent = "You Won!!!";
       resultEmoji = "🥳";
-            resultColor = "green";
+      resultColor = "green";
     } else {
       resultTextContent = "You Lost...";
       resultEmoji = "😢";
@@ -123,23 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Update the previous result
     previousResult = result;
-
-    // Apply the shake animation if the consecutive tie/loss count is >= 1
-    if (consecutiveTieOrLossCount >= 1) {
-      resultText.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97)";
-    } else {
-      resultText.style.animation = "";
-    }
-
-    // Apply the pop animation if the player wins
-    if (result === "win") {
-      resultText.style.animation = "pop 1s ease-in-out forwards";
-      setTimeout(function () {
-        resultText.classList.remove("pop");
-      }, 1000);
-    } else {
-      resultText.classList.remove("pop");
-    }
   }
 
   // Load the images
