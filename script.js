@@ -1,4 +1,13 @@
-   document.addEventListener("DOMContentLoaded", function () {
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
+document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("curiousCat").onclick = function () {
     window.location.href = "https://curiouscat.live/Idkwallah";
   };
@@ -78,31 +87,56 @@
     resultText.style.color = resultColor;
     resultText.classList.add("win");
 
-    if (result === "tie" || result === "lose") {
-      if (previousResult === "tie" || previousResult === "lose") {
-        consecutiveTieOrLossCount++;
-      } else {
-        consecutiveTieOrLossCount = 1;
-      }
-    } else {
-      consecutiveTieOrLossCount = 0;
-    }
-    previousResult = result;
+    resultText.style.display = "flex";
+    resultText.style.flexDirection = "column";
+    resultText.style.justifyContent = "center";
+    resultText.style.alignItems = "center";
+    resultText.style.textAlign = "center";
 
-    if (consecutiveTieOrLossCount >= 2) {
-      resultText.style.fontSize = "2rem";
-      resultText.style.transition = "font-size 0.5s";
-      setTimeout(() => {
-        resultText.style.fontSize = "1rem";
-      }, 1000);
-    }
+    if (result === "tie" || result === "lose") {
+  if (previousResult === "tie" || previousResult === "lose") {
+    consecutiveTieOrLossCount++;
+  } else {
+    consecutiveTieOrLossCount = 1;
+  }
+} else {
+  consecutiveTieOrLossCount = 0;
+}
+previousResult = result;
+
+if (consecutiveTieOrLossCount >= 2) {
+  resultText.style.fontSize = "1.5em"; // Adjust the font size here
+  resultText.style.opacity = 0;
+  setTimeout(() => {
+    resultText.style.transition = "opacity 0.5s";
+    resultText.style.opacity = 1;
+  }, 50);
+} else {
+  resultText.style.fontSize = ""; // Reset the font size
+  resultText.style.transition = "";
+  resultText.style.opacity = "";
+}
+
+if (result === "win") {
+  resultText.style.animation = "dance 0.3s infinite";
+} else {
+  resultText.style.animation = ""; // Remove dancing effect
+}
+
+// Apply gradient to the buttons
+const color1 = getRandomColor();
+const color2 = getRandomColor();
+const gradient = `linear-gradient(45deg, ${color1}, ${color2})`;
+rockButton.style.backgroundImage = gradient;
+paperButton.style.backgroundImage = gradient;
+scissorsButton.style.backgroundImage = gradient;
   }
 
   images.forEach(function (image) {
     const img = new Image();
     img.onload = function () {
-      image.loaded = true
-};
+      image.loaded = true;
+    };
     img.onerror = function () {
       console.error(`Error loading ${img.src}`);
     };
