@@ -64,26 +64,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
       document.body.style.backgroundImage = `url('${image.src}')`;
 
-      // Add hilarious effect on win
-      const winEffects = [
-        "stretch",
-        "dance",
-        "sling",
-        "rotate"
-      ];
-      const randomEffect = winEffects[Math.floor(Math.random() * winEffects.length)];
-      resultText.classList.add(randomEffect);
+     // Add the new effects to the winEffects array
+const winEffects = [
+  "stretch",
+  "dance",
+  "sling",
+  "rotate",
+  "bounce",
+  "flip"
+];
 
-      // Remove the win effect class before the next round begins
-      rockButton.disabled = true;
-      paperButton.disabled = true;
-      scissorsButton.disabled = true;
-      setTimeout(function () {
-        resultText.classList.remove(randomEffect);
-        rockButton.disabled = false;
-        paperButton.disabled = false;
-        scissorsButton.disabled = false;
-      }, 2000);
+// Remove the win effect class before the next round begins
+rockButton.disabled = true;
+paperButton.disabled = true;
+scissorsButton.disabled = true;
+setTimeout(function () {
+  resultText.classList.remove(randomEffect);
+  rockButton.disabled = false;
+  paperButton.disabled = false;
+  scissorsButton.disabled = false;
+}, 3000); // Increase the timeout duration to accommodate the new effects
     }
 
     // Determine the result text content, emoji, and color
