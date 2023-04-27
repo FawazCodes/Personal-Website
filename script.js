@@ -10,16 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const scissorsButton = document.getElementById("scissors");
   const resultText = document.getElementById("result");
 
-  // Add the new effects to the winEffects array
-  const winEffects = [
-    "stretch",
-    "dance",
-    "sling",
-    "rotate",
-    "bounce",
-    "flip"
-  ];
-
   // Define the images to use
   const images = [
     {
@@ -35,6 +25,36 @@ document.addEventListener("DOMContentLoaded", function () {
   // Define variables to keep track of the previous round and consecutive tie/loss counts
   let previousResult = null;
   let consecutiveTieOrLossCount = 0;
+
+  const winEffects = [
+    "stretch",
+    "dance",
+    "sling",
+    "rotate",
+    "bounce",
+    "flip"
+  ];
+
+  let previousEffectIndex = -1;
+
+  function getRandomEffect() {
+    let index;
+    do {
+      index = Math.floor(Math.random() * winEffects.length);
+    } while (index === previousEffectIndex);
+    previousEffectIndex = index;
+    return winEffects[index];
+  }
+
+  function applyRandomEffect() {
+    const randomEffect = getRandomEffect();
+    resultText.classList.add(randomEffect);
+
+    setTimeout(() => {
+      resultText.classList.remove(randomEffect);
+      applyRandomEffect();
+    }, 3000);
+  }
 
   // Define the playRound function
   function playRound(playerChoice) {
@@ -74,28 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       document.body.style.backgroundImage = `url('${image.src}')`;
 
-      // Apply the random effect
-      function getRandomEffect() {
-        return winEffects[Math.floor(Math.random() * winEffects.length)];
-      }
-
-      function applyRandomEffect() {
-        const randomEffect = getRandomEffect();
-        resultText.classList.add(randomEffect);
-
-        setTimeout(() => {
-          resultText.classList.remove(randomEffect);
-          applyRandomEffect();
-        }, 3000);
-      }
-
       applyRandomEffect();
-    } else {
-      resultText.classList.add("shake");
-
-      setTimeout(() => {
-        resultText.classList.remove("shake");
-      }, 3000);
     }
 
     // Determine the result text content, emoji, and color
@@ -110,10 +109,11 @@ document.addEventListener("DOMContentLoaded", function () {
       resultColor = "green";
     } else {
       resultTextContent = "You Lost...";
-      resultEmoji = "😢";
-resultColor = "red";
+      resultEmoji = "😢";  
+      resultColor = "red";
 }
-    // Update the result text with the appropriate content, emoji, and color
+
+// Update the result text with the appropriate content, emoji, and color
 resultText.innerHTML = `${resultTextContent} ${resultEmoji}<br>Computer chose ${computerChoice} ${
   computerChoice === "rock" ? "🪨" : computerChoice === "paper" ? "📄" : "✂️"
 }`;
