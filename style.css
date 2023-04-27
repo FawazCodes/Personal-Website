@@ -19,19 +19,19 @@ html {
 }
 
 body {
-    font-family: 'Overpass', sans-serif;
-    background-image: url("dvd.gif");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    color: #fff;
+  font-family: 'Overpass', sans-serif;
+  background-image: url("dvd.gif");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* change to min-height */
+  width: 100vw;
+  overflow: hidden;
+  color: #fff;
 }
 
 .container {
@@ -47,6 +47,12 @@ body {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 }
 
 h1 {
