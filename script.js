@@ -51,51 +51,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Handle the win result
     if (result === "win") {
-      // Choose a random image
-      let i;
-      do {
-        i = Math.floor(Math.random() * images.length);
-      } while (!images[i].loaded);
-
-      // Play a random win sound
-      const audio = new Audio();
-      audio.preload = "auto";
-      audio.src = `win-sound${Math.floor(Math.random() * 4) + 1}.mp3`;
-      audio.play();
-
-      // Apply the background image
-      document.body.style.backgroundImage = `url('${images[i].src}')`;
-
-      // Add the new effects to the winEffects array
       const winEffects = [
         "stretch",
         "dance",
         "sling",
         "rotate",
         "bounce",
-        "flip"
+        "flip",
+        "run",
+        "wave",
       ];
 
-      // Apply a random effect to the result text
-      const randomEffect = winEffects[Math.floor(Math.random() * winEffects.length)];
-      resultText.classList.add(randomEffect, "fast", "funny");
+      let currentIndex = 0;
+      let previousIndex = -1;
 
-      // Remove the win effect class before the next round begins
-      rockButton.disabled = true;
-      paperButton.disabled = true;
-      scissorsButton.disabled = true;
-      setTimeout(function () {
-        resultText.classList.remove(randomEffect, "fast", "funny");
-        rockButton.disabled = false;
-        paperButton.disabled = false;
-        scissorsButton.disabled = false;
-      }, 5000); // Increase the timeout duration to accommodate the new effects
-    } else if (result === "lose" || result === "tie") {
-      // Apply the shake animation if the player loses or ties
-      resultText.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97)";
+      const changeWinEffect = () => {
+        previousIndex = currentIndex;
+        while (currentIndex === previousIndex) {
+          currentIndex = Math.floor(Math.random() * winEffects.length);
+        }
+
+        resultText.classList.remove(winEffects[previousIndex]);
+        resultText.classList.add(winEffects[currentIndex]);
+
+        setTimeout(changeWinEffect, 200);
+      };
+
+      changeWinEffect();
+    } else {
+      resultText.classList.remove("run", "dance");
+      resultText.classList.add("shake");
     }
 
-        // Determine the result text content, emoji, and color
+    // Determine the result text content, emoji, and color
     let resultTextContent, resultEmoji, resultColor;
     if (result === "tie") {
       resultTextContent = "It's a Tie";
@@ -117,39 +105,42 @@ document.addEventListener("DOMContentLoaded", function () {
     }`;
     resultText.style.color = resultColor;
 
-    // Update the consecutive tie/loss count
-    if (result === "tie" || result === "lose") {
-      consecutiveTieOrLossCount++;
-    } else {
-      consecutiveTieOrLossCount = 0;
-    }
+   // Update the consecutive tie/loss count
+if (result === "tie" || result === "lose") {
+  consecutiveTieOrLossCount++;
+} else {
+  consecutiveTieOrLossCount = 0;
+}
 
-    // Update the previous result
-    previousResult = result;
-  }
+// Apply the shake animation if the consecutive tie/loss count is >= 1
+if (consecutiveTieOrLossCount >= 1) {
+  resultText.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97)";
+} else {
+  resultText.style.animation = "";
+}
+}
 
-  // Load the images
-  images.forEach(function (image) {
-    const img = new Image();
-    img.onload = function () {
-      image.loaded = true;
-    };
-    img.onerror = function () {
-      console.error(`Error loading ${img.src}`);
-    };
-    img.src = image.src;
-    image.img = img;
-  });
-
-  // Add event listeners for the player's choices
-  rockButton.addEventListener("click", function () {
-    playRound("rock");
-  });
-  paperButton.addEventListener("click", function () {
-    playRound("paper");
-  });
-  scissorsButton.addEventListener("click", function () {
-    playRound("scissors");
-  });
+// Load the images
+images.forEach(function (image) {
+const img = new Image();
+img.onload = function () {
+image.loaded = true;
+};
+img.onerror = function () {
+console.error(Error loading ${img.src});
+};
+img.src = image.src;
+image.img = img;
 });
 
+// Add event listeners for the player's choices
+rockButton.addEventListener("click", function () {
+playRound("rock");
+});
+paperButton.addEventListener("click", function () {
+playRound("paper");
+});
+scissorsButton.addEventListener("click", function () {
+playRound("scissors");
+});
+});
