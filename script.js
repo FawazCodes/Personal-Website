@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 2000);
     }
 
-        // Determine the result text content, emoji, and color
+    // Determine the result text content, emoji, and color
     let resultTextContent, resultEmoji, resultColor;
     if (result === "tie") {
       resultTextContent = "It's a Tie";
@@ -96,12 +96,10 @@ document.addEventListener("DOMContentLoaded", function () {
       resultTextContent = "You Won!!!";
       resultEmoji = "🥳";
       resultColor = "green";
-      resultText.style.animation = "win 0.5s ease-out";
     } else {
       resultTextContent = "You Lost...";
       resultEmoji = "😢";
-      resultColor = "red";
-      resultText.style.animation = "lose 0.5s ease-out";
+           resultColor = "red";
     }
 
     // Update the result text with the appropriate content, emoji, and color
@@ -112,11 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Update the consecutive tie/loss count
     if (result === "tie" || result === "lose") {
-      if ((previousResult === "tie" || previousResult === "lose") && result !== "win") {
-        consecutiveTieOrLossCount++;
-      } else {
-        consecutiveTieOrLossCount = 1;
-      }
+      consecutiveTieOrLossCount++;
     } else {
       consecutiveTieOrLossCount = 0;
     }
@@ -124,8 +118,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Update the previous result
     previousResult = result;
 
-    // Apply the shake animation if the consecutive tie/loss count is >= 2
-    if (consecutiveTieOrLossCount >= 2) {
+    // Apply the shake animation if the consecutive tie/loss count is >= 1
+    if (consecutiveTieOrLossCount >= 1) {
       resultText.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97)";
     } else {
       resultText.style.animation = "";
