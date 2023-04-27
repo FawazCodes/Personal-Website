@@ -8,14 +8,22 @@ function getRandomColor() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("curiousCat").onclick = function () {
-    window.location.href = "https://curiouscat.live/Idkwallah";
-  };
-
   const rockButton = document.getElementById("rock");
   const paperButton = document.getElementById("paper");
   const scissorsButton = document.getElementById("scissors");
   const resultText = document.getElementById("result");
+
+  // Apply gradient to the buttons when the page loads
+  const color1 = getRandomColor();
+  const color2 = getRandomColor();
+  const gradient = `linear-gradient(45deg, ${color1}, ${color2})`;
+  rockButton.style.backgroundImage = gradient;
+  paperButton.style.backgroundImage = gradient;
+  scissorsButton.style.backgroundImage = gradient;
+
+  document.getElementById("curiousCat").onclick = function () {
+    window.location.href = "https://curiouscat.live/Idkwallah";
+  };
 
   const images = [
     {
