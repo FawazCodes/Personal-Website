@@ -37,7 +37,7 @@ body {
 .container {
   font-family: 'Vazir Matn', 'Overpass', sans-serif;
   background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
+  border-radius: 20px; /* change the value to achieve the desired level of roundness */
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -48,6 +48,8 @@ body {
   max-width: 600px;
   margin: 0 auto;
   height: calc(100vh - 80px); /* subtracting the height of the header */
+}
+
 }
 
 h1 {
