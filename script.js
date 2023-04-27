@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let previousResult = null;
   let consecutiveTieOrLossCount = 0;
+
   function playRound(playerChoice) {
     const computerChoice = (function () {
       const choices = ["rock", "paper", "scissors"];
@@ -40,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return "lose";
       }
     })();
-
+    
     if (result === "win") {
       let i;
       do {
@@ -65,10 +66,12 @@ document.addEventListener("DOMContentLoaded", function () {
       resultTextContent = "You Won!!!";
       resultEmoji = "🥳";
       resultColor = "green";
+      resultText.style.animation = "win 0.5s ease-out";
     } else {
       resultTextContent = "You Lost...";
       resultEmoji = "😢";
       resultColor = "red";
+      resultText.style.animation = "lose 0.5s ease-out";
     }
 
     resultText.innerHTML = `${resultTextContent} ${resultEmoji}<br>Computer chose ${computerChoice} ${
@@ -77,7 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
     resultText.style.color = resultColor;
 
     if (result === "tie" || result === "lose") {
-      if (previousResult === "tie" || previousResult === "lose") {
+      if ((previousResult === "tie" || previousResult === "lose") && result !== "win") {
         consecutiveTieOrLossCount++;
       } else {
         consecutiveTieOrLossCount = 1;
@@ -88,16 +91,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
     previousResult = result;
 
-    if (consecutiveTieOrLossCount >= 2) {
-      resultText.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97) both";
+      if (consecutiveTieOrLossCount >= 2) {
+      resultText.style.animation = "shake 0.82s cubic-bezier(.36,.07,.19,.97)";
     } else {
       resultText.style.animation = "";
     }
 
-        if (result === "win") {
-      resultText.style.animation = "dance 0.3s infinite";
+    if (result === "win") {
+      resultText.style.animation = "pop 1s ease-in-out forwards";
+      setTimeout(function () {
+        resultText.classList.remove("pop");
+      }, 1000);
     } else {
-      resultText.style.animation = ""; // Remove dancing effect
+      resultText.classList.remove("pop");
     }
   }
 
