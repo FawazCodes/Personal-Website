@@ -63,11 +63,11 @@ h1 {
     transition: 0.3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: 'Vazir Matn', 'Overpass', sans-serif;
-    background-image: linear-gradient(to right, #FFA500, #FFFF00);
+    background-image: linear-gradient(to right, ${chroma.scale(['#FFA500', '#FFFF00']).mode('lch').colors(2)});
 }
 
 .button:hover {
-    background-image: linear-gradient(to right, #005bd1, #007aff);
+    background-image: linear-gradient(to right, ${chroma.scale(['#005bd1', '#007aff']).mode('lch').colors(2)});
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
 }
@@ -111,6 +111,4 @@ h1 {
 
 @media (max-width: 480px) {
     .container {
-        padding: 20px;
-    }
-}
+        padding: 20
