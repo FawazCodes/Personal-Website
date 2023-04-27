@@ -63,10 +63,11 @@ h1 {
     transition: 0.3s;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: 'Vazir Matn', 'Overpass', sans-serif;
+    background-image: linear-gradient(to right, #FFA500, #FFFF00);
 }
 
 .button:hover {
-    background-color: #005bd1;
+    background-image: linear-gradient(to right, #005bd1, #007aff);
     transform: translateY(-2px);
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1);
 }
@@ -100,7 +101,7 @@ h1 {
         font-size: 1.5rem;
     }
     .button {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
         padding: 8px 16px;
     }
     .result {
