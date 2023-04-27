@@ -42,16 +42,26 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
-}
-
 }
 
 h1 {
     font-size: 2rem;
     margin-bottom: 20px;
+    animation: fadeInDown 1s;
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .button {
@@ -68,6 +78,7 @@ h1 {
     font-family: 'Vazir Matn', 'Overpass', sans-serif;
     background-image: linear-gradient(to right, ${chroma.scale(['#FFA500', '#FFFF00']).mode('lch').colors(2)});
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    animation: fadeIn 1s;
 }
 
 .button:hover {
@@ -78,43 +89,39 @@ h1 {
 }
 
 #result {
-font-family: 'Ubuntu', sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  font-weight: bold;
-  margin-top: 20px;
-  margin-bottom: 20px;
+    font-family: 'Ubuntu', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #game-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
 #curiousCat {
-  display: flex;
-  justify-content: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
-}
-
-
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 @keyframes dance {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
-
 
 .result.win {
     color: #4caf50;
@@ -148,4 +155,16 @@ font-family: 'Ubuntu', sans-serif;
 
 @media (max-width: 480px) {
     .container {
-        padding: 20
+        padding: 20px;
+    }
+    h1 {
+        font-size: 1.2rem;
+    }
+    .button {
+        font-size: 1rem;
+        padding: 6px 12px;
+    }
+    .result {
+        font-size: 0.9rem;
+    }
+}
