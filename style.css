@@ -55,6 +55,7 @@ h1 {
   font-size: 2rem;
   margin-bottom: 20px;
   animation: fadeInDown 1s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 @keyframes fadeInDown {
@@ -82,12 +83,14 @@ h1 {
   font-family: 'Vazir Matn', 'Overpass', sans-serif;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   animation: fadeIn 1s;
-  background-image: linear-gradient(to right, ${chroma.scale(['#FFA500', '#FFFF00']).mode('lch').colors(2)});
+  background-image: linear-gradient(to right, #ccf9ff, #7ce8ff, #55d0ff, #00acdf, #0080bf);
 }
 
 .button .emoji {
   font-size: 2rem; /* change the font size to your desired value */
   margin-right: 10px;
+background-image: linear-gradient(to right, #ccf9ff, #7ce8ff, #55d0ff, #00acdf, #0080bf);
+
 }
 
 .button:hover {
