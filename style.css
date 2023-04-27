@@ -34,16 +34,18 @@ body {
 }
 
 .container {
-    font-family: 'Vazir Matn', 'Overpass', sans-serif;
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 50px;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  font-family: 'Vazir Matn', 'Overpass', sans-serif;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
 }
 
 h1 {
@@ -75,11 +77,13 @@ h1 {
 }
 
 .result {
-    font-size: 1.2rem;
-    margin-top: 10px;
-    text-align: center;
-    transition: 0.3s;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  text-align: center;
+  transition: 0.3s;
+  line-height: 1.5em;
 }
+
 
 .result.win {
     color: #4caf50;
