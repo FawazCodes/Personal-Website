@@ -84,6 +84,15 @@ h1 {
   text-align: center;
 }
 
+@keyframes dance {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
 
 .result.win {
     color: #4caf50;
